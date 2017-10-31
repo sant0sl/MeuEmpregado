@@ -3,12 +3,15 @@ package com.meuempregado.bean;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+
 import com.meuempregado.model.Empregado;
 import com.meuempregado.service.EmpregadoService;
 
-//Hibernate configs
-//@ManagedBean(name = "empregadoMB")
-//@SessionScoped
+
+@ManagedBean(name = "empregadoMB")
+@SessionScoped
 public class EmpregadoMB implements Serializable{
 	
 	//Serial para localizar o objeto na memória
@@ -28,12 +31,12 @@ public class EmpregadoMB implements Serializable{
 	public EmpregadoMB() {
 		this.empregado = new Empregado();
 		this.empregadoService = new EmpregadoService();
-		this.listaEmpregados = this.empregadoService.listarTudo();
+		this.listaEmpregados = this.empregadoService.listar();
 	}
 
 	//Método de inserção dos dados do Empregado atráves do ManagedBean
 	public String inserir() {
-		this.empregadoService.inserirEmpregado(this.empregado);
+		this.empregadoService.inserir(this.empregado);
 		System.out.println("Empregado Inserido");
 		this.empregado = new Empregado();
 		return this.index;
@@ -42,7 +45,7 @@ public class EmpregadoMB implements Serializable{
 	//Método de alteração dos dados do Empregado atráves do ManagedBean
 	//OBS: provável que haja problema com o Hibernate nesse método, por causa da passagem do objeto completo, incluindo o id (o que pode dar conflito), ou não.
 	public String alterar() {
-		this.empregadoService.alterarEmpregado(this.empregado);
+		this.empregadoService.alterar(this.empregado);
 		System.out.println("Empregado Alterado");
 		this.empregado = new Empregado();
 		return this.index;
@@ -50,18 +53,18 @@ public class EmpregadoMB implements Serializable{
 	
 	//Método de listagem de todos os dados dos Empregados atráves do ManagedBean
 	public String listarTudo() {
-		this.listaEmpregados = this.empregadoService.listarTudo();
+		this.listaEmpregados = this.empregadoService.listar();
 		System.out.println("Empregados na lista");
 		return this.index;
 	}
 	
 	//Método de listagem da busca dos dados dos Empregados atráves de um filtro de pesquisa da tela
 	//Usar o campo de busca como #{empregadoMB.empregado.nomeCompleto}
-	public String buscarPorAtributos() {
+	/*public String buscarPorAtributos() {
 		this.listaEmpregados = this.empregadoService.buscarPorAtributos(this.empregado.getNomeCompleto());
 		System.out.println("Empregados filtrados na lista");
 		return this.index;
-	}
+	}*/
 	
 	//-------------------------------------------
 	

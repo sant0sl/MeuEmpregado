@@ -16,6 +16,7 @@ public class Empregado {
 	private String rg;
 	private String telefoneFixo;
 	private String telefoneCelular;
+	
 	private String cep;
 	private String enderecoRua;
 	private Integer enderecoNumero;
@@ -23,11 +24,15 @@ public class Empregado {
 	private String bairro;
 	private String cidade;
 	private String uf;
+	
 	private String email;
 	private String senha;
 	private Boolean ativo;
 	private Boolean sexo; //1-Masculino 0-Feminino
 	
+	private String descricao;/*atributo para realizar a descrição das funções que o empregado podera realizar e experiências
+	*profissionais
+	**/
 	//Construtor vazio
 	public Empregado() {
 		
@@ -36,7 +41,7 @@ public class Empregado {
 	//Construtor para alteração de dados. (Para buscar o registro que vai ser alterado, precisa do id do registro)
 	public Empregado(Integer id, String nomeCompleto, Date dataNascimento, String cpf, String rg, String telefoneFixo,
 			String telefoneCelular, String cep, String enderecoRua, Integer enderecoNumero, String complemento,
-			String bairro, String cidade, String uf, String email, String senha, Boolean ativo, Boolean sexo) {
+			String bairro, String cidade, String uf, String email, String senha, Boolean ativo, Boolean sexo,String descricao) {
 		this.id = id;
 		this.nomeCompleto = nomeCompleto;
 		this.dataNascimento = dataNascimento;
@@ -55,12 +60,15 @@ public class Empregado {
 		this.senha = senha;
 		this.ativo = ativo;
 		this.sexo = sexo;
+		this.descricao = descricao;
 	}
 	
-	//Construtor para inserir novos Empregados. (Não há necessidade de id por parâmetro, pois a função AUTO INCREMENT do banco de dados seta automaticamente o id do próximo registro)
+	/*Construtor para inserir novos Empregados. (Não há necessidade de id por parâmetro, pois a função AUTO INCREMENT 
+	*do banco de dados seta automaticamente o id do próximo registro)
+	**/
 	public Empregado(String nomeCompleto, Date dataNascimento, String cpf, String rg, String telefoneFixo,
 			String telefoneCelular, String cep, String enderecoRua, Integer enderecoNumero, String complemento,
-			String bairro, String cidade, String uf, String email, String senha, Boolean ativo, Boolean sexo) {
+			String bairro, String cidade, String uf, String email, String senha, Boolean ativo, Boolean sexo, String descricao) {
 		this.nomeCompleto = nomeCompleto;
 		this.dataNascimento = dataNascimento;
 		this.cpf = cpf;
@@ -78,6 +86,7 @@ public class Empregado {
 		this.senha = senha;
 		this.ativo = ativo;
 		this.sexo = sexo;
+		this.descricao = descricao;
 	}
 
 	//Método toString
@@ -87,7 +96,8 @@ public class Empregado {
 				+ ", cpf=" + cpf + ", rg=" + rg + ", telefoneFixo=" + telefoneFixo + ", telefoneCelular="
 				+ telefoneCelular + ", cep=" + cep + ", enderecoRua=" + enderecoRua + ", enderecoNumero="
 				+ enderecoNumero + ", complemento=" + complemento + ", bairro=" + bairro + ", cidade=" + cidade
-				+ ", uf=" + uf + ", email=" + email + ", senha=" + senha + ", ativo=" + ativo + ", sexo=" + sexo + "]";
+				+ ", uf=" + uf + ", email=" + email + ", senha=" + senha + ", ativo=" + ativo + ", sexo=" + sexo
+				+ ", descricao="+  descricao + "]";
 	}
 	
 	//Getters and Setters
@@ -234,4 +244,13 @@ public class Empregado {
 	public void setSexo(Boolean sexo) {
 		this.sexo = sexo;
 	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+	
 }

@@ -3,37 +3,43 @@ package com.meuempregado.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.meuempregado.dao.EmpregadoDAO;
+import com.meuempregado.dao.FactoryDao;
 import com.meuempregado.model.Empregado;
 
-public class EmpregadoService {
+public class EmpregadoService implements InterfaceService<Empregado>{
 
-	//variável dao do tipo EmpregadoDAO
-	private EmpregadoDAO dao;
-	
-	//Construtor
-	public EmpregadoService() {
-		//atribui ao dao uma nova instância, cada vez que é chamado uma nova instância "EmpregadoService"
-		dao = new EmpregadoDAO();
-	}
-	
 	//Método de inserção de um novo Empregado
-	public void inserirEmpregado(Empregado e) {
-		dao.inserir(e);
+	@Override
+	public void inserir(Empregado entity) {
+		FactoryDao.createGenericDao(Empregado.class).inserir(entity);
 	}
-	
-	//Método de alteração das informações do objeto "e" do tipo Empregado que for passado por parâmetro
-	public void alterarEmpregado(Empregado e) {
-		dao.alterar(e);
+
+	//Método de exclusão de um novo Empregado
+	@Override
+	public void excluir(Integer id) {
+		FactoryDao.createGenericDao(Empregado.class).excluir(id);
 	}
-	
+
+	//Método de alteração das informações do objeto "entity" do tipo Empregado que for passado por parâmetro
+	@Override
+	public void alterar(Empregado entity) {
+		FactoryDao.createGenericDao(Empregado.class).alterar(entity);
+	}
+
 	//Método que busca todos os registros da base de dados
-	public List<Empregado> listarTudo(){
-		return dao.listarTudo();
+	@Override
+	public List<Empregado> listar() {
+		return FactoryDao.createGenericDao(Empregado.class).listar();
+	}
+
+	//Método que busca pelo id o registro da base de dados
+	@Override
+	public Empregado obter(Integer id) {
+		return FactoryDao.createGenericDao(Empregado.class).obter(id);
 	}
 	
 	//Método que filtra registros direto da base de dados, através de um parâmetro.
-	public List<Empregado> buscarPorAtributos(String parametro){
+	/*public List<Empregado> buscarPorAtributos(String parametro){
 		//Faz uma lista do tipo empregado
 		List<Empregado> lista = new ArrayList<Empregado>();
 		
@@ -46,5 +52,5 @@ public class EmpregadoService {
 		
 		//Retorna o que foi atribuída à lista do tipo Empregado
 		return lista;
-	}
+	}*/
 }
