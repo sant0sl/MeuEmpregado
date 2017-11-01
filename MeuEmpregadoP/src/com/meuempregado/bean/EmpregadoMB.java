@@ -35,7 +35,7 @@ public class EmpregadoMB implements Serializable{
 	}
 
 	//Método de inserção dos dados do Empregado atráves do ManagedBean
-	public String inserir() {
+	public String inserirAction() {
 		this.empregadoService.inserir(this.empregado);
 		System.out.println("Empregado Inserido");
 		this.empregado = new Empregado();
@@ -44,7 +44,7 @@ public class EmpregadoMB implements Serializable{
 	
 	//Método de alteração dos dados do Empregado atráves do ManagedBean
 	//OBS: provável que haja problema com o Hibernate nesse método, por causa da passagem do objeto completo, incluindo o id (o que pode dar conflito), ou não.
-	public String alterar() {
+	public String alterarAction() {
 		this.empregadoService.alterar(this.empregado);
 		System.out.println("Empregado Alterado");
 		this.empregado = new Empregado();
@@ -52,7 +52,7 @@ public class EmpregadoMB implements Serializable{
 	}
 	
 	//Método de listagem de todos os dados dos Empregados atráves do ManagedBean
-	public String listarTudo() {
+	public String listarTudoAction() {
 		this.listaEmpregados = this.empregadoService.listar();
 		System.out.println("Empregados na lista");
 		return this.index;
@@ -65,6 +65,16 @@ public class EmpregadoMB implements Serializable{
 		System.out.println("Empregados filtrados na lista");
 		return this.index;
 	}*/
+	
+	/*Metodo que busca o cep e retorna dados de endereco atraves de WebService*/
+	public void buscarCepAction() {
+		
+	}
+	
+	public String verEmpregadoAction() {
+		return "verEmpregado";
+		
+	}
 	
 	//-------------------------------------------
 	

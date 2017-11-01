@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf15095717735240" configfile="/MeuEmpregadoP/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="verEmpregado.xhtml" x="1068" y="384" id="pf15095726183364" referenceLink="//@navigationRule.2/@navigationCase.0/@toViewId|" outlinks="pf15095726183365" inlinks="pf15095726183366" path="verEmpregado.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pesquisarEmpregado.xhtml" x="1008" y="36" id="pf15095726183367" referenceLink="//@navigationRule.4/@navigationCase.0/@toViewId|" outlinks="pf15095726183366 pf15095726655038" inlinks="pf15095726183365 pf150957269695210" path="pesquisarEmpregado.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="painelAdministrativo.xhtml" x="12" y="36" id="pf15095726655039" referenceLink="//@navigationRule.7/@navigationCase.0/@toViewId|" outlinks="pf150957269695210 pf150957275258711 pf150957275258712" inlinks="pf15095726655038 pf150957283520015 pf150957287312016" path="painelAdministrativo.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="cadastrarEmpregado.xhtml" x="624" y="216" id="pf150957275258713" referenceLink="//@navigationRule.7/@fromViewId|" outlinks="pf150957287312016" inlinks="pf150957275258711" path="cadastrarEmpregado.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="alterarEmpregado.xhtml" x="228" y="408" id="pf150957275258714" referenceLink="//@navigationRule.7/@fromViewId|" outlinks="pf150957283520015" inlinks="pf150957275258712" path="alterarEmpregado.xhtml"/>
+  <links id="pf15095726183365" target="pf15095726183367" source="pf15095726183364" outcome="voltar" redirect="true"/>
+  <links id="pf15095726183366" target="pf15095726183364" source="pf15095726183367" outcome="verEmpregadoSelecionado" redirect="true"/>
+  <links id="pf15095726655038" target="pf15095726655039" source="pf15095726183367" outcome="menuPrincipal" redirect="true"/>
+  <links id="pf150957269695210" target="pf15095726183367" source="pf15095726655039" outcome="pesquisarEmpregados" redirect="true"/>
+  <links id="pf150957275258711" target="pf150957275258713" source="pf15095726655039" outcome="cadastrarEmpregado" redirect="true"/>
+  <links id="pf150957275258712" target="pf150957275258714" source="pf15095726655039" outcome="alterarDados" redirect="true"/>
+  <links id="pf150957283520015" target="pf15095726655039" source="pf150957275258714" outcome="cancelarAlteracao" redirect="true"/>
+  <links id="pf150957287312016" target="pf15095726655039" source="pf150957275258713" outcome="cancelarCadastro" redirect="true"/>
+</pageflow:Pageflow>

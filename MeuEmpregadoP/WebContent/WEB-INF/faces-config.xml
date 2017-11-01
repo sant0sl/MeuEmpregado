@@ -2,11 +2,69 @@
 <faces-config version="2.0" xmlns="http://java.sun.com/xml/ns/javaee"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee      http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
- <navigation-rule>
-  <from-view-id>/suaTela.xhtml</from-view-id>
-  <navigation-case>
-   <from-outcome>painelAdministrativo</from-outcome>
-   <to-view-id>/painelAdministrativo.xhtml</to-view-id>
-  </navigation-case>
- </navigation-rule>
+ 
+ 	<navigation-rule>
+		<from-view-id>verEmpregado.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>voltar</from-outcome>
+			<to-view-id>pesquisarEmpregado.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>pesquisarEmpregado.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>verEmpregadoSelecionado</from-outcome>
+			<to-view-id>verEmpregado.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>pesquisarEmpregado.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>menuPrincipal</from-outcome>
+			<to-view-id>painelAdministrativo.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>painelAdministrativo.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>pesquisarEmpregados</from-outcome>
+			<to-view-id>pesquisarEmpregado.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>painelAdministrativo.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>cadastrarEmpregado</from-outcome>
+			<to-view-id>cadastrarEmpregado.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>painelAdministrativo.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>alterarDados</from-outcome>
+			<to-view-id>alterarEmpregado.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>alterarEmpregado.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>cancelarAlteracao</from-outcome>
+			<to-view-id>painelAdministrativo.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>cadastrarEmpregado.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>cancelarCadastro</from-outcome>
+			<to-view-id>painelAdministrativo.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
 </faces-config>

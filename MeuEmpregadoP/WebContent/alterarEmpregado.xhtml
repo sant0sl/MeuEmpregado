@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<!--  IMPORTANDO HEAD -->
+	<ui:include src="incPainel/painelHead.xhtml" />
+</h:head>
+<h:body class="nav-md">
+
+	<div class="container body">
+
+		<div class="main_container">
+
+			<!--  IMPORTANDO MENU PRINCIPAL -->
+			<ui:include src="incPainel/painelMenu.xhtml" />
+
+			<!-- IMPORTANDO MENU TOPO -->
+			<ui:include src="incPainel/painelMenuTopo.xhtml" />
+			<!-- PAGINA PRINCIPAL -->
+
+			<div class="right_col" role="main">
+				<div class="">
+					<!-- INSIRA SEU TITULO -->
+					Alterar Cadastro
+					<div class="clearfix"></div>
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<div class="x_panel">
+								<div class="x_title">
+									<h2>
+										Cadastrar Clientes <small>Cadastre seu funcionário</small>
+									</h2>
+									<ul class="nav navbar-right panel_toolbox">
+										<li><a class="collapse-link"><i
+												class="fa fa-chevron-up"></i></a></li>
+										<li class="dropdown"><a href="#" class="dropdown-toggle"
+											data-toggle="dropdown" role="button" aria-expanded="false"><i
+												class="fa fa-wrench"></i></a>
+											<ul class="dropdown-menu" role="menu">
+												<li><a href="#">Configuração</a></li>
+											</ul></li>
+										<li><a class="close-link"><i class="fa fa-close"></i></a>
+										</li>
+									</ul>
+									<div class="clearfix"></div>
+								</div>
+								<div class="x_content">
+									<br />
+
+									<!-- INSIRA SEU <form> -->
+			<h:form>
+				<h1>Dados Pessoais</h1>
+				<hr>
+				<div>
+					<div class="form-group col-md-6">
+						<h:outputLabel value="Nome Completo:*"/>
+						<h:inputText styleClass="form-control" value="{empregadoMB.empregado.nomeCompleto}"/>
+					</div>
+					<div class="form-group col-md-3">
+						<h:outputLabel value="RG:*"/>
+						<h:inputText styleClass="form-control" value="#{empregadoMB.empregado.rg}"/>
+					</div>
+					<div class="form-group col-md-3">
+						<h:outputLabel value="Telefone Celular:"/>
+						<h:inputText styleClass="form-control" value="#{empregadoMB.empregado.telefoneCelular}"/>
+					</div>
+				</div>
+				<div>
+					<div class="form-group col-md-3">
+						<h:outputLabel value="Data de Nascimento:*"/>
+						<h:inputText styleClass="form-control" value="#{empregadoMB.empregado.dataNascimento}"/>
+					</div>
+					<div class="form-group col-md-3">
+						<h:outputLabel value="Sexo:*"/>
+						<h:selectOneMenu styleClass="form-control" value="#{empregadoMB.empregado.sexo}">
+							<f:selectItem itemValue="0" itemLabel="Feminino"/>
+							<f:selectItem itemValue="1" itemLabel="Masculino"/>
+						</h:selectOneMenu>
+					</div>
+					<div class="form-group col-md-3">
+						<h:outputLabel value="CPF:*"/>
+						<h:inputText styleClass="form-control" value="#{empregadoMB.empregado.cpf}"/>
+					</div>
+					<div class="form-group col-md-3">
+						<h:outputLabel value="Telefone Fixo:"/>
+						<h:inputText styleClass="form-control" value="#{empregadoMB.empregado.telefoneFixo}"/>
+					</div>
+				</div>
+				<div>
+					<div class="form-group col-md-12">
+					
+					</div>
+				</div>
+				<br>
+				<h1>Dados de Endereço</h1>
+				<hr>
+				<div>
+					<div class="form-group col-md-12">
+						<h:outputLabel value="CEP:*"/>
+						<h:inputText styleClass="form-control" value="#{empregadoMB.empregado.cep}"/>
+						<p>
+						<h:commandButton styleClass="btn btn-primary" value="Buscar" action="#{empregadoMB.buscarCepAction}"/>
+						<a href="http://www.buscacep.correios.com.br/sistemas/buscacep/" target="_blank">&nbsp;&nbsp;Não sei meu CEP</a>
+					</div>
+					<div>
+						<div class="form-group col-md-9">
+							<h:outputLabel value="Rua:*"/>
+							<h:inputText styleClass="form-control" value="#{empregadoMB.empregado.enderecoRua}"/>
+						</div>
+						<div class="form-group col-md-3">
+							<h:outputLabel value="Numero:*"/>
+							<h:inputText styleClass="form-control" value="#{empregadoMB.empregado.enderecoNumero}"/>
+						</div>
+					</div>
+					<div>
+						<div class="form-group col-md-3">
+							<h:outputLabel value="Complemento:"/>
+							<h:inputText styleClass="form-control" value="#{empregadoMB.empregado.complemento}"/>
+						</div>
+						<div class="form-group col-md-3">
+							<h:outputLabel value="Bairro:*"/>
+							<h:inputText styleClass="form-control" value="#{empregadoMB.empregado.bairro}"/>
+						</div>
+						<div class="form-group col-md-3">
+							<h:outputLabel value="Cidade:*"/>
+							<h:inputText  disabled="true" styleClass="form-control" value="#{empregadoMB.empregado.cidade}"/>
+						</div>
+						<div class="form-group col-md-3">
+							<h:outputLabel value="UF:*"/>
+							<h:inputText  disabled="true" styleClass="form-control" value="#{empregadoMB.empregado.uf}"/>
+						</div>
+					</div>
+					<div>
+					<div class="form-group col-md-12">
+					
+					</div>
+				</div>
+				</div>
+				<p>
+				<h1>Dados de Acesso</h1>
+				<hr>
+				<div>
+					<div>
+						<div class="form-group col-md-12">
+							<h:outputLabel value="Email:*"/>
+							<h:inputText styleClass="form-control" value="#{empregadoMB.empregado.email}"/>
+						</div>
+					</div>
+					<div >
+						<div class="form-group col-md-12">
+							<label for="obs">Caso deseje alterar a senha preencha todos os campos abaixo:</label>	
+						</div>
+					</div>
+					<div class="form-group col-md-12" >
+						<div class="form-group col-md-6">
+							<h:outputLabel value="Senha Atual:"/>
+							<h:inputText maxlength="20" styleClass="form-control" value="#{empregadoMB.empregado.senha}"/>
+						</div>
+					</div>
+					<div>
+						<div class="form-group col-md-6">
+							<h:outputLabel value="Nova Senha:"/>
+							<h:inputText styleClass="form-control"  maxlength="20" value="#{empregadoMB.empregado.novasenha}"/>
+						</div>
+						<div class="form-group col-md-6">
+							<h:outputLabel value="Confirmar Senha:"/>
+							<h:inputText styleClass="form-control"  maxlength="20" value="#{empregadoMB.empregado.confirmarsenha}"/>
+						</div>
+					</div>
+				</div>
+				<div>
+					<div class="form-group col-md-12">
+					
+					</div>
+				</div>
+				<div align="center" id="actions">
+					<h:commandLink styleClass="btn btn-primary" value="Alterar" action="#{customerManagedBean.alterarAction}"/>
+			      	<h:commandLink styleClass="btn btn-default" value="Cancelar" action="painelAdministrativo?faces-redirect=true"/>
+				</div>
+				<br>
+				<hr>
+			</h:form>
+									<!-- INSIRA SEU </form> -->
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			
+			<!-- / PAGINA PRINCIPAL -->
+			
+		</div>
+
+		
+
+		<!-- FOOTER PRINCIPAL -->
+		<ui:include src="incPainel/painelFooter.xhtml" />
+		<!-- /FOOTER PRINCIPAL -->
+	</div>
+	<!-- IMPORT JS -->
+	<ui:include src="incPainel/painelImportsJs.xhtml" />
+	<!-- /IMPORT JS -->
+</h:body>
+</html>
