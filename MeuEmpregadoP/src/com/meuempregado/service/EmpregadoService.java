@@ -14,10 +14,9 @@ public class EmpregadoService implements InterfaceService<Empregado>{
 		FactoryDao.createGenericDao(Empregado.class).inserir(entity);
 	}
 
-	//Método de exclusão de um novo Empregado
 	@Override
 	public void excluir(Integer id) {
-		FactoryDao.createGenericDao(Empregado.class).excluir(id);
+		//NÃO SERÁ EXCLUÍDO NENHUM REGISTRO
 	}
 
 	//Método de alteração das informações do objeto "entity" do tipo Empregado que for passado por parâmetro

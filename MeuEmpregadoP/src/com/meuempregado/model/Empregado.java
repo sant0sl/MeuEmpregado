@@ -2,13 +2,20 @@ package com.meuempregado.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-//Espaço para anotações. (Hibernate)
+@Entity
 public class Empregado {
 	
-	//Espaço para anotações. (Hibernate)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id",unique=true,nullable=false)
 	private Integer id;
-	
 	
 	private String nomeCompleto;
 	private Date dataNascimento;
@@ -27,8 +34,8 @@ public class Empregado {
 	
 	private String email;
 	private String senha;
-	private Boolean ativo;
-	private Boolean sexo; //1-Masculino 0-Feminino
+	private Boolean ativo; //true-Ativo false-Inativo
+	private Boolean sexo; //true-Masculino false-Feminino
 	
 	private String descricao;/*atributo para realizar a descrição das funções que o empregado podera realizar e experiências
 	*profissionais
@@ -97,7 +104,7 @@ public class Empregado {
 				+ telefoneCelular + ", cep=" + cep + ", enderecoRua=" + enderecoRua + ", enderecoNumero="
 				+ enderecoNumero + ", complemento=" + complemento + ", bairro=" + bairro + ", cidade=" + cidade
 				+ ", uf=" + uf + ", email=" + email + ", senha=" + senha + ", ativo=" + ativo + ", sexo=" + sexo
-				+ ", descricao="+  descricao + "]";
+				+ ", descricao="+  descricao + "]\n";
 	}
 	
 	//Getters and Setters
