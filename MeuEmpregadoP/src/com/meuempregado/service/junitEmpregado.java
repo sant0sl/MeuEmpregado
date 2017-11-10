@@ -1,5 +1,6 @@
 package com.meuempregado.service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -10,41 +11,59 @@ import com.meuempregado.model.Empregado;
 public class junitEmpregado {
 
 	@Test
-	public void TesteUnit() {
+	public void TesteUnit() throws Exception {
 		
 		/*Empregado e = new Empregado();
-		//e.setId(2);
-		e.setNomeCompleto("Daniel Fosquerau");
+		//e.setId(1);
+		e.setNomeCompleto("Your mother");
 		e.setDataNascimento(new Date());
-		e.setCpf("222.222.222-22");
-		e.setRg("22.222.222-2");
-		e.setTelefoneFixo("(41)2222-2222");
-		e.setTelefoneCelular("(41)22222-2222");
+		e.setCpf("111.111.111-11");
+		e.setRg("11.111.111-1");
+		e.setTelefoneFixo("(41)1111-1111");
+		e.setTelefoneCelular("(41)11111-1111");
 		e.setCep("83750000");
-		e.setEnderecoRua("Rua C");
-		e.setEnderecoNumero(222);
-		e.setComplemento("Casa");
-		e.setBairro("Barça");
+		e.setEnderecoRua("St. Highway to Hell");
+		e.setEnderecoNumero(666);
+		e.setComplemento("House");
+		e.setBairro("Heaven");
 		e.setCidade("Lapa");
 		e.setUf("PR");
-		e.setEmail("danfosquerau@gmail.com");
-		e.setSenha("222");
+		e.setEmail("yourmother@outlook.com");
+		e.setSenha("666");
 		e.setAtivo(true);
-		e.setSexo(true);
-		e.setDescricao("Teste");*/
+		e.setSexo(false);
+		e.setDescricao("Facear");*/
 		
+		//-------------------------------------------
+		//Instanciando Service do Empregado
 		EmpregadoService es = new EmpregadoService();
+		
+		//Instanciando variáveis para teste
+		Empregado mostrar = new Empregado();
+		List<Empregado> listar = new ArrayList<>();
+		//-------------------------------------------
+
+		/*Método de inserir informações no banco de dados*/
 		//es.inserir(e);
 		
+		/*Método de alterar informações no banco de dados*/
 		//es.alterar(e);
 		
-		List<Empregado> listar = es.listar();
-		//Método de filtro
+		//-------------------------------------------
+		
+		/*Método para listar todos os registros do banco de dados*/
+		listar = es.listar();
+		
+		/*Método para listar empregados a partir de um campo de pesquisa. Filtrando por(cidade, bairro, endereço ou cep)*/
+		//listar = es.filtrar("Duque");
+		
+		/*Método para buscar cep através de WebService*/
+		/*mostrar.setCep("81900400");
+		es.buscarCEP(mostrar);*/
+		
+		//----------------Mostra informações no console-----------------
+		//System.out.println(mostrar);
 		System.out.println(listar);
-		
-		//Empregado empregado = es.obter(1);
-		//System.out.println(empregado);
-		
 	}
 	
 }

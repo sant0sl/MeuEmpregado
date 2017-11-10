@@ -3,10 +3,16 @@ package com.meuempregado.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Query;
+
+import org.lavieri.modelutil.cep.WebServiceCep;
+
+import com.meuempregado.dao.Conexao;
 import com.meuempregado.dao.FactoryDao;
+import com.meuempregado.dao.GenericDao;
 import com.meuempregado.model.Empregado;
 
-public class EmpregadoService implements InterfaceService<Empregado>{
+public class EmpregadoService extends GenericDao<Empregado> implements InterfaceService<Empregado>{
 
 	//Método de inserção de um novo Empregado
 	@Override
@@ -37,19 +43,40 @@ public class EmpregadoService implements InterfaceService<Empregado>{
 		return FactoryDao.createGenericDao(Empregado.class).obter(id);
 	}
 	
-	//Método que filtra registros direto da base de dados, através de um parâmetro.
-	/*public List<Empregado> buscarPorAtributos(String parametro){
+	//Método que filtra registros direto da base de dados, através de um parâmetro em um campo de pesquisa. (cidade, bairro, endereço ou cep);
+	public List<Empregado> filtrar(String parametro){
 		//Faz uma lista do tipo empregado
-		List<Empregado> lista = new ArrayList<Empregado>();
+		List<Empregado> listaResultado = new ArrayList<Empregado>();
 		
-		//verificação da string que foi passada por parâmetro
+		//verificação da string que foi passada por parâmetro e dependendo vai atribuir na lista o resultado.
 		if(parametro != null && parametro.trim().length() > 0) {
-			lista = dao.buscarPorAtributos(parametro);
+			em = Conexao.getInstance().createEntityManager();
+			//Query
+			String hql = "select e from Empregado e where (e.cidade like :p) or (e.bairro like :p) or (e.enderecoRua like :p) or (e.cep like :p)";
+			Query query = em.createQuery(hql);
+			query.setParameter("p", "%"+parametro+"%");
+			listaResultado = (List<Empregado>) query.getResultList();
 		}else {
-			lista = listarTudo();
+			listaResultado = listar();
 		}
 		
 		//Retorna o que foi atribuída à lista do tipo Empregado
-		return lista;
-	}*/
+		return listaResultado;
+	}
+	
+	//Método de busca de informações de endereço através de WebService.
+	public Empregado buscarCEP(Empregado e) throws Exception {
+		WebServiceCep ws = WebServiceCep.searchCep(e.getCep());
+		if(ws.isCepNotFound()==true) {
+			throw new Exception("Não foi encontrado nenhuma informação através deste CEP.");
+		}else {
+			e.setCep(ws.getCep());
+			e.setEnderecoRua(ws.getLogradouroFull());
+			e.setBairro(ws.getBairro());
+			e.setCidade(ws.getCidade());
+			e.setUf(ws.getUf());			
+		}
+		return e;
+	}
+	
 }

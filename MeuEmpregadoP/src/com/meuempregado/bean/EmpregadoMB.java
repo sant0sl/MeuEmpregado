@@ -22,11 +22,6 @@ public class EmpregadoMB implements Serializable{
 	private List<Empregado> listaEmpregados;
 	private EmpregadoService empregadoService;
 	
-	
-	//RETORNAR À PÁGINA PRINCIPAL, OU PADRÃO APÓS CADASTRO, ALTERAÇÃO, OU OUTRA AÇÃO
-	String index = "index";
-	
-	
 	//Construtor para novas instâncias das Classes
 	public EmpregadoMB() {
 		this.empregado = new Empregado();
@@ -35,45 +30,42 @@ public class EmpregadoMB implements Serializable{
 	}
 
 	//Método de inserção dos dados do Empregado atráves do ManagedBean
-	public String inserirAction() {
+	public void inserirEmpregadoAction() {
 		this.empregadoService.inserir(this.empregado);
 		System.out.println("Empregado Inserido");
 		this.empregado = new Empregado();
-		return this.index;
 	}
 	
 	//Método de alteração dos dados do Empregado atráves do ManagedBean
 	//OBS: provável que haja problema com o Hibernate nesse método, por causa da passagem do objeto completo, incluindo o id (o que pode dar conflito), ou não.
-	public String alterarAction() {
+	public void alterarEmpregadoAction() {
 		this.empregadoService.alterar(this.empregado);
 		System.out.println("Empregado Alterado");
 		this.empregado = new Empregado();
-		return this.index;
 	}
 	
 	//Método de listagem de todos os dados dos Empregados atráves do ManagedBean
-	public String listarTudoAction() {
+	public void listarEmpregadoAction() {
 		this.listaEmpregados = this.empregadoService.listar();
 		System.out.println("Empregados na lista");
-		return this.index;
 	}
 	
 	//Método de listagem da busca dos dados dos Empregados atráves de um filtro de pesquisa da tela
+	//Filtra Empregados a partir de (cidade, bairro, endereço e cep);
 	//Usar o campo de busca como #{empregadoMB.empregado.nomeCompleto}
-	/*public String buscarPorAtributos() {
-		this.listaEmpregados = this.empregadoService.buscarPorAtributos(this.empregado.getNomeCompleto());
+	public void filtrarEmpregadoAction() {
+		this.listaEmpregados = this.empregadoService.filtrar(this.empregado.getNomeCompleto());
 		System.out.println("Empregados filtrados na lista");
-		return this.index;
-	}*/
+		this.empregado = new Empregado();
+	}
 	
 	/*Metodo que busca o cep e retorna dados de endereco atraves de WebService*/
-	public void buscarCepAction() {
-		
+	public void buscarCepAction() throws Exception {
+		this.empregado = this.empregadoService.buscarCEP(this.empregado);
 	}
 	
 	public String verEmpregadoAction() {
 		return "verEmpregado";
-		
 	}
 	
 	//-------------------------------------------

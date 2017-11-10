@@ -22,5 +22,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="L:/ProjetoIntegrador3/lib/webServiceCep.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
