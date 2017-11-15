@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+<!--  IMPORTANDO HEAD -->
+<ui:include src="incPainel/painelHead.xhtml" />
+</h:head>
+<h:body class="nav-md">
+
+	<div class="container body">
+
+		<div class="main_container">
+
+			<!--  IMPORTANDO MENU PRINCIPAL -->
+			<ui:include src="incPainel/painelMenu.xhtml" />
+
+			<!-- IMPORTANDO MENU TOPO -->
+			<ui:include src="incPainel/painelMenuTopo.xhtml" />
+			<!-- PAGINA PRINCIPAL -->
+
+			<div class="right_col" role="main">
+				<div class="">
+					<!-- INSIRA SEU TITULO -->
+					Realizar Cadastro
+					<div class="clearfix"></div>
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<div class="x_panel">
+								<div class="x_title">
+									<h2>
+										Realizar Cadastro
+									</h2>
+									<ul class="nav navbar-right panel_toolbox">
+										<li><a class="collapse-link"><i
+												class="fa fa-chevron-up"></i></a></li>
+										<li class="dropdown"><a href="#" class="dropdown-toggle"
+											data-toggle="dropdown" role="button" aria-expanded="false"><i
+												class="fa fa-wrench"></i></a>
+											<ul class="dropdown-menu" role="menu">
+												<li><a href="#">Configuração</a></li>
+											</ul></li>
+										<li><a class="close-link"><i class="fa fa-close"></i></a>
+										</li>
+									</ul>
+									<div class="clearfix"></div>
+								</div>
+								<div class="x_content">
+									<br />
+
+									<!-- INSIRA SEU <form> -->
+	<h:form>
+		<div class="container">
+			<div class="row">
+				<h1 align="left">Dados Pessoais</h1>	
+				<hr/>	
+			</div>
+			<div class="row">
+				<div class="form-group col-md-6">
+					<h:outputLabel value="Nome Completo:*"/>
+					<h:inputText styleClass="form-control" value="#{empregadoMB.usuario.nomeCompleto}"/>
+				</div>
+				<div class="form-group col-md-3">
+					<h:outputLabel value="RG:*"/>
+					<h:inputText styleClass="form-control" value="#{empregadoMB.usuario.empregado.rg}"/>
+				</div>
+				<div class="form-group col-md-3">
+					<h:outputLabel value="Telefone Celular:"/>
+					<h:inputText styleClass="form-control" value="#{empregadoMB.usuario.empregado.telefoneCelular}"/>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-3">
+					<h:outputLabel value="Data de Nascimento:*"/>
+					<h:inputText styleClass="form-control" value="#{empregadoMB.usuario.empregado.dataNascimento}"/>
+				</div>
+				<div  class="form-group col-md-3">
+					<h:outputLabel value="Sexo:*"/>
+					<h:selectOneRadio value="#{empregadoMB.usuario.empregado.sexo}">
+						<f:selectItem itemValue="false" itemLabel="Feminino"/>
+						&nbsp;&nbsp;
+						<f:selectItem itemValue="true" itemLabel="Masculino"/>
+					</h:selectOneRadio>
+				</div>
+				<div class="form-group col-md-3">
+					<h:outputLabel value="CPF:*"/>
+					<h:inputText styleClass="form-control" value="#{empregadoMB.usuario.empregado.cpf}"/>
+				</div>
+				<div class="form-group col-md-3">
+					<h:outputLabel value="Telefone Fixo:"/>
+					<h:inputText styleClass="form-control" value="#{empregadoMB.usuario.empregado.telefoneFixo}"/>
+				</div>
+			</div>
+			<br/>
+			<div class="row">
+				<h1>Dados de Endereço</h1>
+				<hr/>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-3">
+					<h:outputLabel value="CEP:*"/>
+					<h:inputText styleClass="form-control" value="#{empregadoMB.usuario.empregado.cep}"/>
+				</div>
+				<div class="form-group col-md-1">
+					<br/>
+					<h:commandLink styleClass="btn btn-primary" value="Buscar" action="#{empregadoMB.buscarCepAction}"/>
+				</div>
+				<div class="form-group col-md-2">	
+					<br/>
+					<p/>
+					<a href="http://www.buscacep.correios.com.br/sistemas/buscacep/"  target="_blank">&nbsp;&nbsp;Não sei meu CEP</a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-10">
+					<h:outputLabel value="Rua:*"/>
+					<h:inputText styleClass="form-control" value="#{empregadoMB.usuario.empregado.enderecoRua}"/>
+				</div>
+				<div class="form-group col-md-2">
+					<h:outputLabel value="Numero:*"/>
+					<h:inputText styleClass="form-control" value="#{empregadoMB.usuario.empregado.enderecoNumero}"/>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-3">
+					<h:outputLabel value="Complemento:"/>
+					<h:inputText styleClass="form-control" value="#{empregadoMB.usuario.empregado.complemento}"/>
+				</div>
+				<div class="form-group col-md-3">
+					<h:outputLabel value="Bairro:*"/>
+					<h:inputText styleClass="form-control" value="#{empregadoMB.usuario.empregado.bairro}"/>
+				</div>
+				<div class="form-group col-md-3">
+					<h:outputLabel value="Cidade:*"/>
+					<h:inputText readonly="true" styleClass="form-control" value="#{empregadoMB.usuario.empregado.cidade}"/>
+				</div>
+				<div class="form-group col-md-3">
+					<h:outputLabel value="UF:*"/>
+					<h:inputText readonly="true" styleClass="form-control" value="#{empregadoMB.usuario.empregado.uf}"/>
+				</div>
+			</div>
+			<br/>
+			<div class="row">
+				<h1>Dados de Acesso</h1>
+				<hr/>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-6">
+					<h:outputLabel value="Email:*"/>
+					<h:inputText styleClass="form-control" value="#{empregadoMB.usuario.email}"/>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-3">
+					<h:outputLabel value="Senha:*"/>
+					<h:inputText styleClass="form-control"  maxlength="20" value="#{empregadoMB.usuario.senha}"/>
+				</div>
+				<div class="form-group col-md-3">
+					<h:outputLabel value="Confirmar Senha:*"/>
+					<h:inputText styleClass="form-control" maxlength="20" value="#{empregadoMB.confirmarSenha}"/>
+				</div>
+				<div class="col-md-3">
+					<br/>
+					<p/>
+					<p id="verif"></p>
+				</div>
+			</div>
+			<br/>
+			<div class="row">
+				<h1>Informações adicionais</h1>
+				<hr/>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-12">
+					<p> Escreva abaixo informações que você gostaria que o Empregador soubesse.</p>
+					<h:inputTextarea styleClass="form-control" value="#{empregadoMB.usuario.empregado.descricao}"/>
+				</div>
+			</div>
+			<br/>
+			<div align="center" class="row">
+				<h:commandLink styleClass="btn btn-primary" value="Confimar Cadastro" action="#{empregadoMB.inserirEmpregadoAction}"/>
+			   	<h:commandLink styleClass="btn btn-default" value="Cancelar" hreflang="/painelAdministrativo.xhtml"/>
+			</div>
+		</div>
+	</h:form>
+									<!-- INSIRA SEU </form> -->
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			
+			<!-- / PAGINA PRINCIPAL -->
+			
+		</div>
+		
+
+		<!-- FOOTER PRINCIPAL -->
+		<ui:include src="incPainel/painelFooter.xhtml" />
+		<!-- /FOOTER PRINCIPAL -->
+	</div>
+	<!-- IMPORT JS -->
+	<ui:include src="incPainel/painelImportsJs.xhtml" />
+	<!-- /IMPORT JS -->
+</h:body>
+</html>

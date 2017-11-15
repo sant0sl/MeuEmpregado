@@ -13,9 +13,9 @@ public class junitEmpregado {
 	@Test
 	public void TesteUnit() throws Exception {
 		
-		/*Empregado e = new Empregado();
+		Empregado e = new Empregado();
 		//e.setId(1);
-		e.setNomeCompleto("Your mother");
+		/*e.setNomeCompleto("Your mother");
 		e.setDataNascimento(new Date());
 		e.setCpf("111.111.111-11");
 		e.setRg("11.111.111-1");
@@ -28,8 +28,6 @@ public class junitEmpregado {
 		e.setBairro("Heaven");
 		e.setCidade("Lapa");
 		e.setUf("PR");
-		e.setEmail("yourmother@outlook.com");
-		e.setSenha("666");
 		e.setAtivo(true);
 		e.setSexo(false);
 		e.setDescricao("Facear");*/
@@ -44,7 +42,7 @@ public class junitEmpregado {
 		//-------------------------------------------
 
 		/*Método de inserir informações no banco de dados*/
-		//es.inserir(e);
+		es.inserir(e);
 		
 		/*Método de alterar informações no banco de dados*/
 		//es.alterar(e);

@@ -17,8 +17,7 @@ public class Empregado {
 	@Column(name="id",unique=true,nullable=false)
 	private Integer id;
 	
-	private String nomeCompleto;
-	private Date dataNascimento;
+	private String dataNascimento;
 	private String cpf;
 	private String rg;
 	private String telefoneFixo;
@@ -44,11 +43,10 @@ public class Empregado {
 	}
 	
 	//Construtor para alteração de dados. (Para buscar o registro que vai ser alterado, precisa do id do registro)
-	public Empregado(Integer id, String nomeCompleto, Date dataNascimento, String cpf, String rg, String telefoneFixo,
+	public Empregado(Integer id, String dataNascimento, String cpf, String rg, String telefoneFixo,
 			String telefoneCelular, String cep, String enderecoRua, Integer enderecoNumero, String complemento,
 			String bairro, String cidade, String uf, Boolean ativo, Boolean sexo,String descricao) {
 		this.id = id;
-		this.nomeCompleto = nomeCompleto;
 		this.dataNascimento = dataNascimento;
 		this.cpf = cpf;
 		this.rg = rg;
@@ -69,10 +67,9 @@ public class Empregado {
 	/*Construtor para inserir novos Empregados. (Não há necessidade de id por parâmetro, pois a função AUTO INCREMENT 
 	*do banco de dados seta automaticamente o id do próximo registro)
 	**/
-	public Empregado(String nomeCompleto, Date dataNascimento, String cpf, String rg, String telefoneFixo,
+	public Empregado(String dataNascimento, String cpf, String rg, String telefoneFixo,
 			String telefoneCelular, String cep, String enderecoRua, Integer enderecoNumero, String complemento,
 			String bairro, String cidade, String uf, Boolean ativo, Boolean sexo, String descricao) {
-		this.nomeCompleto = nomeCompleto;
 		this.dataNascimento = dataNascimento;
 		this.cpf = cpf;
 		this.rg = rg;
@@ -93,7 +90,7 @@ public class Empregado {
 	//Método toString
 	@Override
 	public String toString() {
-		return "Empregado [id=" + id + ", nomeCompleto=" + nomeCompleto + ", dataNascimento=" + dataNascimento
+		return "Empregado [id=" + id +", dataNascimento=" + dataNascimento
 				+ ", cpf=" + cpf + ", rg=" + rg + ", telefoneFixo=" + telefoneFixo + ", telefoneCelular="
 				+ telefoneCelular + ", cep=" + cep + ", enderecoRua=" + enderecoRua + ", enderecoNumero="
 				+ enderecoNumero + ", complemento=" + complemento + ", bairro=" + bairro + ", cidade=" + cidade
@@ -110,19 +107,12 @@ public class Empregado {
 		this.id = id;
 	}
 
-	public String getNomeCompleto() {
-		return nomeCompleto;
-	}
 
-	public void setNomeCompleto(String nomeCompleto) {
-		this.nomeCompleto = nomeCompleto;
-	}
-
-	public Date getDataNascimento() {
+	public String getDataNascimento() {
 		return dataNascimento;
 	}
 
-	public void setDataNascimento(Date dataNascimento) {
+	public void setDataNascimento(String dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
 

@@ -11,6 +11,7 @@ import com.meuempregado.dao.Conexao;
 import com.meuempregado.dao.FactoryDao;
 import com.meuempregado.dao.GenericDao;
 import com.meuempregado.model.Empregado;
+import com.meuempregado.model.Usuario;
 
 public class EmpregadoService extends GenericDao<Empregado> implements InterfaceService<Empregado>{
 
@@ -65,18 +66,18 @@ public class EmpregadoService extends GenericDao<Empregado> implements Interface
 	}
 	
 	//Método de busca de informações de endereço através de WebService.
-	public Empregado buscarCEP(Empregado e) throws Exception {
-		WebServiceCep ws = WebServiceCep.searchCep(e.getCep());
+	public Usuario buscarCEP(Usuario u) throws Exception {
+		WebServiceCep ws = WebServiceCep.searchCep(u.getEmpregado().getCep());
 		if(ws.isCepNotFound()==true) {
 			throw new Exception("Não foi encontrado nenhuma informação através deste CEP.");
 		}else {
-			e.setCep(ws.getCep());
-			e.setEnderecoRua(ws.getLogradouroFull());
-			e.setBairro(ws.getBairro());
-			e.setCidade(ws.getCidade());
-			e.setUf(ws.getUf());			
+			u.getEmpregado().setCep(ws.getCep());
+			u.getEmpregado().setEnderecoRua(ws.getLogradouroFull());
+			u.getEmpregado().setBairro(ws.getBairro());
+			u.getEmpregado().setCidade(ws.getCidade());
+			u.getEmpregado().setUf(ws.getUf());			
 		}
-		return e;
+		return u;
 	}
 	
 }

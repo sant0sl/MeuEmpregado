@@ -9,8 +9,8 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-	<!--  IMPORTANDO HEAD -->
-	<ui:include src="incPainel/painelHead.xhtml" />
+<!--  IMPORTANDO HEAD -->
+<ui:include src="incPainel/painelHead.xhtml" />
 </h:head>
 <h:body class="nav-md">
 
@@ -35,7 +35,7 @@
 							<div class="x_panel">
 								<div class="x_title">
 									<h2>
-										Cadastrar Clientes <small>Cadastre seu funcionário</small>
+										Pesquisar Empregados
 									</h2>
 									<ul class="nav navbar-right panel_toolbox">
 										<li><a class="collapse-link"><i
@@ -55,57 +55,50 @@
 									<br />
 
 									<!-- INSIRA SEU <form> -->
-				<h1>Pesquisar empregados</h1>
-				<hr>
-				<h:form>
-					<div>
-						<div class="form-group col-md-10">
-							<h:inputText id="search" placeholder="Pesquisar por nome,cidade,CEP,etc... "
-							styleClass="form-control mb-4 mr-sm-4 mb-sm-0" value="#{empregadoMB.parametros}"/>
-						</div>
-						<div class="form-group col-md-2">
-							<h:commandButton styleClass="btn btn-success" value="Buscar" action="#{empregadoMB.buscar}"/>
-						</div>
-					</div>
-				</h:form>
-				<div class="form-group col-md-12"></div>
-				<div>
-					<div class="form-group col-md-1"></div>
-					<div class="form-group col-md-10">
-					</div>
-					</div>
-					</hr>
-					
-			<h:form>
-				<h:dataTable styleClass="table table-striped" var="e" value="#{empregadoMB.listaEmpregados}">    
-					<h:column>
-						<f:facet name="header">
-							<h:outputLabel value="Nome"/>
-						</f:facet>
-				    	<h:outputText value="#{c.nomeCompleto}"/>
-					</h:column>    
-					<h:column>
-						<f:facet name="header">
-							<h:outputLabel value="Cidade"/>
-						</f:facet>
-				    	<h:outputText value="#{c.cidade}-#{c.uf}"/>
-					</h:column>
-					<h:column>
-						<f:facet name="header">
-							<h:outputLabel value="Bairro"/>
-						</f:facet>
-				    	<h:outputText value="#{c.bairro}"/>
-					</h:column>
-					<h:column>
-						<h:commandLink value="Ver" action="#{empregadoMB.verEmpregadoAction">
-							<f:setPropertyActionListener target="#{customerManagedBean.customer}" value="#{c}" />
-						</h:commandLink>		    	
-					</h:column>       
-				</h:dataTable>
-			</h:form>
-								<!-- INSIRA SEU </form> -->
+	<h:form>
+		<div class="row">
+			<div class="form-group col-md-9">
+				<h:outputLabel value="Pesquisar por nome, cidade, bairro, CEP, etc... "/>
+				<h:inputText id="searchName" styleClass="form-control mb-4 mr-sm-4 mb-sm-0" value="#{empregadoMB.filtroEmpregado}">
+						<p:ajax event="keyup" listener="#{empregadoMB.filtrarEmpregadoAction}" update="customerTable" process="@all"/>
+				</h:inputText>
+			</div>
+		</div>
+	</h:form>
+	<p:panel id="customerTable">
+		<h:form>
+			<h:dataTable styleClass="table table-striped" var="e" value="#{empregadoMB.listaEmpregados}">
+				<h:column>
+					<f:facet name="header">
+						<h:outputLabel value="Nome"/>
+					</f:facet>
+				    <h:outputText value="#{e.nomeCompleto}"/>
+				</h:column> 
+				<h:column>
+					<f:facet name="header">
+						<h:outputLabel value="Cidade"/>
+					</f:facet>
+		 			<h:outputText value="#{e.empregado.cidade}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputLabel value="Bairro"/>
+					</f:facet>
+				   	<h:outputText value="#{e.empregado.bairro}"/>
+				</h:column>
+				<h:column>
+					<h:commandLink value="Ver" action="verInformaçõesEmpregado?faces-redirect=true">
+						<f:setPropertyActionListener target="#{customerManagedBean.customer}" value="#{e}" />
+					</h:commandLink>		    	
+				</h:column>
+			</h:dataTable>
+		</h:form>
+	</p:panel>
+	
+									<!-- INSIRA SEU </form> -->
 								</div>
 							</div>
+						</div>
 					</div>
 
 				</div>
@@ -114,7 +107,8 @@
 			<!-- / PAGINA PRINCIPAL -->
 			
 		</div>
-		</div>
+
+		
 
 		<!-- FOOTER PRINCIPAL -->
 		<ui:include src="incPainel/painelFooter.xhtml" />
