@@ -57,11 +57,14 @@
 									<!-- INSIRA SEU <form> -->
 	<h:form>
 		<div class="row">
+				<h:outputLabel value="Pesquisar por cidade, bairro, endereço ou cep: "/>
 			<div class="form-group col-md-9">
-				<h:outputLabel value="Pesquisar por nome, cidade, bairro, CEP, etc... "/>
 				<h:inputText id="searchName" styleClass="form-control mb-4 mr-sm-4 mb-sm-0" value="#{empregadoMB.filtroEmpregado}">
 						<p:ajax event="keyup" listener="#{empregadoMB.filtrarEmpregadoAction}" update="customerTable" process="@all"/>
 				</h:inputText>
+			</div>
+			<div class="form-group col-md-3">
+				<h:commandLink styleClass="btn btn-primary" value="Listar todos" action="#{empregadoMB.listarEmpregadoAction}"/>
 			</div>
 		</div>
 	</h:form>
@@ -78,18 +81,21 @@
 					<f:facet name="header">
 						<h:outputLabel value="Cidade"/>
 					</f:facet>
-		 			<h:outputText value="#{e.empregado.cidade}"/>
+		 			<h:outputText value="#{e.cidade} - #{e.uf}"/>
 				</h:column>
 				<h:column>
 					<f:facet name="header">
 						<h:outputLabel value="Bairro"/>
 					</f:facet>
-				   	<h:outputText value="#{e.empregado.bairro}"/>
+				   	<h:outputText value="#{e.bairro}"/>
 				</h:column>
 				<h:column>
-					<h:commandLink value="Ver" action="verInformaçõesEmpregado?faces-redirect=true">
-						<f:setPropertyActionListener target="#{customerManagedBean.customer}" value="#{e}" />
-					</h:commandLink>		    	
+					<h:commandLink styleClass="btn btn-default" value="Ver" action="verInfoEmpregado?faces-redirect=true">
+						<f:setPropertyActionListener target="#{empregadoMB.empregado}" value="#{e}" />
+					</h:commandLink>
+					<h:commandLink styleClass="btn btn-default" value="Alterar" action="alterarDados?faces-redirect=true">
+						<f:setPropertyActionListener target="#{empregadoMB.empregado}" value="#{e}" />
+					</h:commandLink>	    	
 				</h:column>
 			</h:dataTable>
 		</h:form>

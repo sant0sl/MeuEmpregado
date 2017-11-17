@@ -64,37 +64,37 @@
 			<div class="row">
 				<div class="form-group col-md-6">
 					<h:outputLabel value="Nome Completo:*"/>
-					<h:inputText styleClass="form-control" value="#{empregadoMB.usuario.nomeCompleto}"/>
+					<h:inputText styleClass="form-control" value="#{empregadoMB.empregado.nomeCompleto}"/>
 				</div>
 				<div class="form-group col-md-3">
 					<h:outputLabel value="RG:*"/>
-					<h:inputText styleClass="form-control" value="#{empregadoMB.usuario.empregado.rg}"/>
+					<h:inputText styleClass="form-control" value="#{empregadoMB.empregado.rg}"/>
 				</div>
 				<div class="form-group col-md-3">
 					<h:outputLabel value="Telefone Celular:"/>
-					<h:inputText styleClass="form-control" value="#{empregadoMB.usuario.empregado.telefoneCelular}"/>
+					<h:inputText styleClass="form-control" value="#{empregadoMB.empregado.telefoneCelular}"/>
 				</div>
 			</div>
 			<div class="row">
 				<div class="form-group col-md-3">
 					<h:outputLabel value="Data de Nascimento:*"/>
-					<h:inputText styleClass="form-control" value="#{empregadoMB.usuario.empregado.dataNascimento}"/>
+					<h:inputText styleClass="form-control" value="#{empregadoMB.empregado.dataNascimento}"/>
 				</div>
 				<div  class="form-group col-md-3">
 					<h:outputLabel value="Sexo:*"/>
-					<h:selectOneRadio value="#{empregadoMB.usuario.empregado.sexo}">
+					<h:selectOneRadio value="#{empregadoMB.empregado.sexo}">
 						<f:selectItem itemValue="false" itemLabel="Feminino"/>
 						&nbsp;&nbsp;
 						<f:selectItem itemValue="true" itemLabel="Masculino"/>
 					</h:selectOneRadio>
 				</div>
 				<div class="form-group col-md-3">
-					<h:outputLabel value="CPF:*"/>
-					<h:inputText styleClass="form-control" value="#{empregadoMB.usuario.empregado.cpf}"/>
+					<h:outputLabel value="Telefone Celular:*"/>
+					<h:inputText styleClass="form-control" value="#{empregadoMB.empregado.telefoneCelular}"/>
 				</div>
 				<div class="form-group col-md-3">
 					<h:outputLabel value="Telefone Fixo:"/>
-					<h:inputText styleClass="form-control" value="#{empregadoMB.usuario.empregado.telefoneFixo}"/>
+					<h:inputText styleClass="form-control" value="#{empregadoMB.empregado.telefoneFixo}"/>
 				</div>
 			</div>
 			<div class="row">
@@ -110,13 +110,11 @@
 			<div class="row">
 				<div class="form-group col-md-3">
 					<h:outputLabel value="CEP:*"/>
-					<h:inputText styleClass="form-control" value="#{empregadoMB.usuario.empregado.cep}"/>
+					<h:inputText styleClass="form-control" value="#{empregadoMB.empregado.cep}">
+						<p:ajax event="change" update="@form" process="@all" listener="#{empregadoMB.buscarCepAction}"/>
+					</h:inputText>
 				</div>
-				<div class="form-group col-md-1">
-					<br/>
-					<h:commandLink styleClass="btn btn-primary" value="Buscar" action="#{empregadoMB.buscarCepAction}"/>
-				</div>
-				<div class="form-group col-md-2">	
+				<div class="form-group col-md-2">
 					<br/>
 					<p/>
 					<a href="http://www.buscacep.correios.com.br/sistemas/buscacep/"  target="_blank">&nbsp;&nbsp;Não sei meu CEP</a>
@@ -125,29 +123,29 @@
 			<div class="row">
 				<div class="form-group col-md-10">
 					<h:outputLabel value="Rua:*"/>
-					<h:inputText styleClass="form-control" value="#{empregadoMB.usuario.empregado.enderecoRua}"/>
+					<h:inputText styleClass="form-control" value="#{empregadoMB.empregado.enderecoRua}"/>
 				</div>
 				<div class="form-group col-md-2">
 					<h:outputLabel value="Numero:*"/>
-					<h:inputText styleClass="form-control" value="#{empregadoMB.usuario.empregado.enderecoNumero}"/>
+					<h:inputText styleClass="form-control" value="#{empregadoMB.empregado.enderecoNumero}"/>
 				</div>
 			</div>
 			<div class="row">
 				<div class="form-group col-md-3">
 					<h:outputLabel value="Complemento:"/>
-					<h:inputText styleClass="form-control" value="#{empregadoMB.usuario.empregado.complemento}"/>
+					<h:inputText styleClass="form-control" value="#{empregadoMB.empregado.complemento}"/>
 				</div>
 				<div class="form-group col-md-3">
 					<h:outputLabel value="Bairro:*"/>
-					<h:inputText styleClass="form-control" value="#{empregadoMB.usuario.empregado.bairro}"/>
+					<h:inputText styleClass="form-control" value="#{empregadoMB.empregado.bairro}"/>
 				</div>
 				<div class="form-group col-md-3">
 					<h:outputLabel value="Cidade:*"/>
-					<h:inputText readonly="true" styleClass="form-control" value="#{empregadoMB.usuario.empregado.cidade}"/>
+					<h:inputText readonly="true" styleClass="form-control" value="#{empregadoMB.empregado.cidade}"/>
 				</div>
 				<div class="form-group col-md-3">
 					<h:outputLabel value="UF:*"/>
-					<h:inputText readonly="true" styleClass="form-control" value="#{empregadoMB.usuario.empregado.uf}"/>
+					<h:inputText readonly="true" styleClass="form-control" value="#{empregadoMB.empregado.uf}"/>
 				</div>
 			</div>
 			<br/>
@@ -158,7 +156,7 @@
 			<div class="row">
 				<div class="form-group col-md-6">
 					<h:outputLabel value="Email:*"/>
-					<h:inputText styleClass="form-control" value="#{empregadoMB.usuario.email}"/>
+					<h:inputText styleClass="form-control" value="#{empregadoMB.empregado.email}"/>
 				</div>
 			</div>
 			<p/>
@@ -168,16 +166,10 @@
 				</div>
 			</div>
 			<p/>
-			<div class="row" >
-				<div class="form-group col-md-3">
-					<h:outputLabel value="Senha Atual:"/>
-					<h:inputText maxlength="20" styleClass="form-control" value="#{empregadoMB.senhaAtual}"/>
-				</div>
-			</div>
 			<div class="row">
 				<div class="form-group col-md-3">
-					<h:outputLabel value="Nova Senha:"/>
-					<h:inputText styleClass="form-control"  maxlength="20" value="#{empregadoMB.novaSenha}"/>
+					<h:outputLabel value="Senha:"/>
+					<h:inputText styleClass="form-control"  maxlength="20" value="#{empregadoMB.empregado.senha}"/>
 				</div>
 				<div class="form-group col-md-3">
 					<h:outputLabel value="Confirmar Senha:"/>
@@ -197,13 +189,13 @@
 			<div class="row">
 				<div class="form-group col-md-12">
 					<p> Escreva abaixo informações que você gostaria que o Empregador soubesse.</p>
-					<h:inputTextarea styleClass="form-control" value="#{empregadoMB.usuario.empregado.descricao}"/>
+					<h:inputTextarea styleClass="form-control" value="#{empregadoMB.empregado.descricao}"/>
 				</div>
 			</div>
 			<br/>
 			<div align="center" class="row">
 				<h:commandLink styleClass="btn btn-primary" value="Confimar Cadastro" action="#{empregadoMB.alterarEmpregadoAction}"/>
-			   	<h:commandLink styleClass="btn btn-default" value="Cancelar" hreflang="/painelAdministrativo.xhtml"/>
+			   	<h:commandLink styleClass="btn btn-default" value="Cancelar" action="#{empregadoMB.voltarBuscarEmpregado}"/>
 			</div>
 		</div>
 	</h:form>

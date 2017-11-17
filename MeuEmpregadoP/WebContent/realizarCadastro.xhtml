@@ -11,6 +11,7 @@
 <h:head>
 <!--  IMPORTANDO HEAD -->
 <ui:include src="incPainel/painelHead.xhtml" />
+<script type="text/javascript" src="resources/js/jsEmpregado.js"/>
 </h:head>
 <h:body class="nav-md">
 
@@ -68,33 +69,33 @@
 				</div>
 				<div class="form-group col-md-3">
 					<h:outputLabel value="RG:*"/>
-					<h:inputText styleClass="form-control" value="#{empregadoMB.empregado.rg}"/>
+					<p:inputMask mask="99.999.999-9" styleClass="form-control" value="#{empregadoMB.empregado.rg}"/>
 				</div>
 				<div class="form-group col-md-3">
 					<h:outputLabel value="Telefone Celular:"/>
-					<h:inputText styleClass="form-control" value="#{empregadoMB.empregado.telefoneCelular}"/>
+					<p:inputMask styleClass="form-control" value="#{empregadoMB.empregado.telefoneCelular}" mask="(99)99999-9999"/>
 				</div>
 			</div>
 			<div class="row">
 				<div class="form-group col-md-3">
 					<h:outputLabel value="Data de Nascimento:*"/>
-					<h:inputText styleClass="form-control" value="#{empregadoMB.empregado.dataNascimento}"/>
+					<p:inputMask styleClass="form-control" value="#{empregadoMB.empregado.dataNascimento}" mask="99/99/9999"/>
 				</div>
 				<div  class="form-group col-md-3">
 					<h:outputLabel value="Sexo:*"/>
-					<h:selectOneRadio value="#{empregadoMB.empregado.sexo}">
+					<p:selectOneRadio value="#{empregadoMB.empregado.sexo}">
 						<f:selectItem itemValue="false" itemLabel="Feminino"/>
 						&nbsp;&nbsp;
 						<f:selectItem itemValue="true" itemLabel="Masculino"/>
-					</h:selectOneRadio>
+					</p:selectOneRadio>
 				</div>
 				<div class="form-group col-md-3">
 					<h:outputLabel value="CPF:*"/>
-					<h:inputText styleClass="form-control" value="#{empregadoMB.empregado.cpf}"/>
+					<p:inputMask mask="999.999.999-99" styleClass="form-control" value="#{empregadoMB.empregado.cpf}" />
 				</div>
 				<div class="form-group col-md-3">
 					<h:outputLabel value="Telefone Fixo:"/>
-					<h:inputText styleClass="form-control" value="#{empregadoMB.empregado.telefoneFixo}"/>
+					<p:inputMask styleClass="form-control" value="#{empregadoMB.empregado.telefoneFixo}" mask="(99)9999-9999"/>
 				</div>
 			</div>
 			<br/>
@@ -105,11 +106,10 @@
 			<div class="row">
 				<div class="form-group col-md-3">
 					<h:outputLabel value="CEP:*"/>
-					<h:inputText styleClass="form-control" value="#{empregadoMB.empregado.cep}"/>
-				</div>
-				<div class="form-group col-md-1">
-					<br/>
-					<h:commandLink styleClass="btn btn-primary" value="Buscar" action="#{empregadoMB.buscarCepAction}" update="formCadastro"/>
+					<h:inputText maxlength="8" styleClass="form-control" value="#{empregadoMB.empregado.cep}">
+						<p:ajax event="change" update="@form" process="@all" listener="#{empregadoMB.buscarCepAction}"/>
+					</h:inputText>
+					<h:commandLink styleClass="btn btn-primary" value="Limpar campos" action="#{empregadoMB.limparCep}"/>
 				</div>
 				<div class="form-group col-md-2">	
 					<br/>
@@ -156,7 +156,7 @@
 					<h:inputText styleClass="form-control" value="#{empregadoMB.empregado.email}"/>
 				</div>
 			</div>
-			<div class="row">
+			<div class="row" id="confirmaSenha">
 				<div class="form-group col-md-3">
 					<h:outputLabel value="Senha:*"/>
 					<h:inputText styleClass="form-control"  maxlength="20" value="#{empregadoMB.empregado.senha}"/>
@@ -185,7 +185,7 @@
 			<br/>
 			<div align="center" class="row">
 				<h:commandLink styleClass="btn btn-primary" value="Confimar Cadastro" action="#{empregadoMB.inserirEmpregadoAction}"/>
-			   	<h:commandLink styleClass="btn btn-default" value="Cancelar" hreflang="/painelAdministrativo.xhtml"/>
+			   	<h:commandLink styleClass="btn btn-default" value="Cancelar" action="#{empregadoMB.voltarCadastrarEmpregado}"/>
 			</div>
 		</div>
 	</h:form>

@@ -57,7 +57,7 @@ public class EmpregadoService extends GenericDao<Empregado> implements Interface
 			query.setParameter("p", "%"+parametro+"%");
 			listaResultado = (List<Empregado>) query.getResultList();
 		}else {
-			listaResultado = listar();
+			listaResultado = null;
 		}
 		
 		//Retorna o que foi atribuída à lista do tipo Empregado
