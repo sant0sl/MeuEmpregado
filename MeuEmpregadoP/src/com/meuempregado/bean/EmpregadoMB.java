@@ -7,7 +7,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import com.meuempregado.model.Empregado;
-import com.meuempregado.model.Usuario;
 import com.meuempregado.service.EmpregadoService;
 
 
@@ -23,35 +22,36 @@ public class EmpregadoMB implements Serializable{
 	private String confirmarSenha;
 	private String novaSenha;
 	private String senhaAtual;
-	private Usuario usuario;
-	private List<Usuario> listaEmpregados;
+	private Empregado empregado;
+	private List<Empregado> listaEmpregados;
 	private EmpregadoService empregadoService;
 	
 	//Construtor para novas instâncias das Classes
 	public EmpregadoMB() {
-		this.usuario = new Usuario();
+		this.empregado = new Empregado();
 		this.empregadoService = new EmpregadoService();
-		//this.listaEmpregados = this.empregadoService.listar();
+		this.listaEmpregados = this.empregadoService.listar();
 	}
 
 	//Método de inserção dos dados do Empregado atráves do ManagedBean
 	public void inserirEmpregadoAction() {
-		//this.empregadoService.inserir(this.usuario);
+		this.empregado.setAtivo(true);
+		this.empregadoService.inserir(this.empregado);
 		System.out.println("Empregado Inserido");
-		this.usuario = new Usuario();
+		this.empregado = new Empregado();
 	}
 	
 	//Método de alteração dos dados do Empregado atráves do ManagedBean
 	//OBS: provável que haja problema com o Hibernate nesse método, por causa da passagem do objeto completo, incluindo o id (o que pode dar conflito), ou não.
 	public void alterarEmpregadoAction() {
-		//this.empregadoService.alterar(this.empregado);
+		this.empregadoService.alterar(this.empregado);
 		System.out.println("Empregado Alterado");
-		this.usuario = new Usuario();
+		this.empregado = new Empregado();
 	}
 	
 	//Método de listagem de todos os dados dos Empregados atráves do ManagedBean
 	public void listarEmpregadoAction() {
-	//	this.listaEmpregados = this.empregadoService.listar();
+		this.listaEmpregados = this.empregadoService.listar();
 		System.out.println("Empregados na lista");
 	}
 	
@@ -59,7 +59,7 @@ public class EmpregadoMB implements Serializable{
 	//Filtra Empregados a partir de (cidade, bairro, endereço e cep);
 	//Usar o campo de busca como #{empregadoMB.empregado.nomeCompleto}
 	public void filtrarEmpregadoAction() {
-	//	this.listaEmpregados = this.empregadoService.filtrar(filtroEmpregado);
+		this.listaEmpregados = this.empregadoService.filtrar(filtroEmpregado);
 		System.out.println("Empregados filtrados na lista");
 		filtroEmpregado ="";
 	}
@@ -67,21 +67,23 @@ public class EmpregadoMB implements Serializable{
 	/*Metodo que busca o cep e retorna dados de endereco atraves de WebService*/
 	public void buscarCepAction() throws Exception {
 		System.out.println("Buscando Cep e dados de endereço");
-		//this.usuario = this.empregadoService.buscarCEP(usuario);
+		this.empregado = this.empregadoService.buscarCEP(empregado);
 	}
 	
 	public String verEmpregadoAction() {
-		return "verEmpregado";
+		return "verInfoEmpregado.xhtml";
 	}
 	
 	//-------------------------------------------
 	
 	//Getters and Setters
 
-	
+	public String getFiltroEmpregado() {
+		return filtroEmpregado;
+	}
 
-	public List<Usuario> getListaEmpregados() {
-		return listaEmpregados;
+	public void setFiltroEmpregado(String filtroEmpregado) {
+		this.filtroEmpregado = filtroEmpregado;
 	}
 
 	public String getConfirmarSenha() {
@@ -108,23 +110,19 @@ public class EmpregadoMB implements Serializable{
 		this.senhaAtual = senhaAtual;
 	}
 
-	public String getFiltroEmpregado() {
-		return filtroEmpregado;
+	public Empregado getEmpregado() {
+		return empregado;
 	}
 
-	public void setFiltroEmpregado(String filtroEmpregado) {
-		this.filtroEmpregado = filtroEmpregado;
+	public void setEmpregado(Empregado empregado) {
+		this.empregado = empregado;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
+	public List<Empregado> getListaEmpregados() {
+		return listaEmpregados;
 	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-
-	public void setListaEmpregados(List<Usuario> listaEmpregados) {
+	public void setListaEmpregados(List<Empregado> listaEmpregados) {
 		this.listaEmpregados = listaEmpregados;
 	}
 }

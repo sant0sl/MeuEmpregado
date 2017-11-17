@@ -1,13 +1,10 @@
 package com.meuempregado.model;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
 public class Empregado {
@@ -17,6 +14,7 @@ public class Empregado {
 	@Column(name="id",unique=true,nullable=false)
 	private Integer id;
 	
+	private String nomeCompleto;
 	private String dataNascimento;
 	private String cpf;
 	private String rg;
@@ -31,22 +29,28 @@ public class Empregado {
 	private String cidade;
 	private String uf;
 	
+	private String email;
+	private String senha;
+	
 	private Boolean ativo; //true-Ativo false-Inativo
 	private Boolean sexo; //true-Masculino false-Feminino
 	
 	private String descricao;/*atributo para realizar a descrição das funções que o empregado podera realizar e experiências
 	*profissionais
 	**/
+	
 	//Construtor vazio
 	public Empregado() {
 		
 	}
 	
 	//Construtor para alteração de dados. (Para buscar o registro que vai ser alterado, precisa do id do registro)
-	public Empregado(Integer id, String dataNascimento, String cpf, String rg, String telefoneFixo,
+	public Empregado(Integer id, String nomeCompleto, String dataNascimento, String cpf, String rg, String telefoneFixo,
 			String telefoneCelular, String cep, String enderecoRua, Integer enderecoNumero, String complemento,
-			String bairro, String cidade, String uf, Boolean ativo, Boolean sexo,String descricao) {
+			String bairro, String cidade, String uf, String email, String senha, Boolean ativo, Boolean sexo,
+			String descricao) {
 		this.id = id;
+		this.nomeCompleto = nomeCompleto;
 		this.dataNascimento = dataNascimento;
 		this.cpf = cpf;
 		this.rg = rg;
@@ -59,6 +63,8 @@ public class Empregado {
 		this.bairro = bairro;
 		this.cidade = cidade;
 		this.uf = uf;
+		this.email = email;
+		this.senha = senha;
 		this.ativo = ativo;
 		this.sexo = sexo;
 		this.descricao = descricao;
@@ -67,9 +73,11 @@ public class Empregado {
 	/*Construtor para inserir novos Empregados. (Não há necessidade de id por parâmetro, pois a função AUTO INCREMENT 
 	*do banco de dados seta automaticamente o id do próximo registro)
 	**/
-	public Empregado(String dataNascimento, String cpf, String rg, String telefoneFixo,
+	public Empregado(String nomeCompleto, String dataNascimento, String cpf, String rg, String telefoneFixo,
 			String telefoneCelular, String cep, String enderecoRua, Integer enderecoNumero, String complemento,
-			String bairro, String cidade, String uf, Boolean ativo, Boolean sexo, String descricao) {
+			String bairro, String cidade, String uf, String email, String senha, Boolean ativo, Boolean sexo,
+			String descricao) {
+		this.nomeCompleto = nomeCompleto;
 		this.dataNascimento = dataNascimento;
 		this.cpf = cpf;
 		this.rg = rg;
@@ -82,23 +90,27 @@ public class Empregado {
 		this.bairro = bairro;
 		this.cidade = cidade;
 		this.uf = uf;
+		this.email = email;
+		this.senha = senha;
 		this.ativo = ativo;
 		this.sexo = sexo;
 		this.descricao = descricao;
 	}
 
+	
 	//Método toString
 	@Override
 	public String toString() {
-		return "Empregado [id=" + id +", dataNascimento=" + dataNascimento
+		return "Empregado [id=" + id + ", nomeCompleto=" + nomeCompleto + ", dataNascimento=" + dataNascimento
 				+ ", cpf=" + cpf + ", rg=" + rg + ", telefoneFixo=" + telefoneFixo + ", telefoneCelular="
 				+ telefoneCelular + ", cep=" + cep + ", enderecoRua=" + enderecoRua + ", enderecoNumero="
 				+ enderecoNumero + ", complemento=" + complemento + ", bairro=" + bairro + ", cidade=" + cidade
-				+ ", uf=" + uf + ", ativo=" + ativo + ", sexo=" + sexo
-				+ ", descricao="+  descricao + "]\n";
+				+ ", uf=" + uf + ", email=" + email + ", senha=" + senha + ", ativo=" + ativo + ", sexo=" + sexo
+				+ ", descricao=" + descricao + "]";
 	}
 	
 	//Getters and Setters
+	
 	public Integer getId() {
 		return id;
 	}
@@ -107,6 +119,13 @@ public class Empregado {
 		this.id = id;
 	}
 
+	public String getNomeCompleto() {
+		return nomeCompleto;
+	}
+
+	public void setNomeCompleto(String nomeCompleto) {
+		this.nomeCompleto = nomeCompleto;
+	}
 
 	public String getDataNascimento() {
 		return dataNascimento;
@@ -204,6 +223,22 @@ public class Empregado {
 		this.uf = uf;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
 	public Boolean getAtivo() {
 		return ativo;
 	}
@@ -227,5 +262,4 @@ public class Empregado {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	
 }

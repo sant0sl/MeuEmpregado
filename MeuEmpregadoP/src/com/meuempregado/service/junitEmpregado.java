@@ -1,7 +1,6 @@
 package com.meuempregado.service;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.junit.Test;
@@ -13,10 +12,12 @@ public class junitEmpregado {
 	@Test
 	public void TesteUnit() throws Exception {
 		
-		Empregado e = new Empregado();
-		//e.setId(1);
-		/*e.setNomeCompleto("Your mother");
-		e.setDataNascimento(new Date());
+		/*Empregado e = new Empregado();
+		e.setId(1);
+		e.setNomeCompleto("Leonardo da Vinte");
+		e.setEmail("sant0sl@outlook.com");
+		e.setSenha("123123");
+		e.setDataNascimento("19/10/1998");
 		e.setCpf("111.111.111-11");
 		e.setRg("11.111.111-1");
 		e.setTelefoneFixo("(41)1111-1111");
@@ -42,7 +43,7 @@ public class junitEmpregado {
 		//-------------------------------------------
 
 		/*Método de inserir informações no banco de dados*/
-		es.inserir(e);
+		//es.inserir(e);
 		
 		/*Método de alterar informações no banco de dados*/
 		//es.alterar(e);
@@ -53,14 +54,14 @@ public class junitEmpregado {
 		listar = es.listar();
 		
 		/*Método para listar empregados a partir de um campo de pesquisa. Filtrando por(cidade, bairro, endereço ou cep)*/
-		//listar = es.filtrar("Duque");
+		//listar = es.filtrar("heav");
 		
 		/*Método para buscar cep através de WebService*/
 		/*mostrar.setCep("81900400");
 		es.buscarCEP(mostrar);*/
 		
 		//----------------Mostra informações no console-----------------
-		//System.out.println(mostrar);
+		System.out.println(mostrar);
 		System.out.println(listar);
 	}
 	
