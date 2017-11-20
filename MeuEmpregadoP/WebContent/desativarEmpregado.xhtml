@@ -28,14 +28,14 @@
 			<div class="right_col" role="main">
 				<div class="">
 					<!-- INSIRA SEU TITULO -->
-					Pesquisar Empregados
+					Desativar Conta
 					<div class="clearfix"></div>
 					<div class="row">
 						<div class="col-md-12 col-sm-12 col-xs-12">
 							<div class="x_panel">
 								<div class="x_title">
 									<h2>
-										Pesquisar Empregados
+										Desativar Conta
 									</h2>
 									<ul class="nav navbar-right panel_toolbox">
 										<li><a class="collapse-link"><i
@@ -56,52 +56,16 @@
 
 									<!-- INSIRA SEU <form> -->
 	<h:form>
-		<div class="row">	
-			<div class="form-group col-md-8">
-				<h:outputLabel value="Pesquisar por cidade, bairro, endereço ou cep: "/>
-				<h:inputText id="searchName" styleClass="form-control mb-4 mr-sm-4 mb-sm-0" value="#{empregadoMB.filtroEmpregado}">
-						<p:ajax event="keyup" listener="#{empregadoMB.filtrarEmpregadoAction}" update="customerTable" process="@all"/>
-						<p:ajax event="keydown" listener="#{empregadoMB.filtrarEmpregadoAction}" update="customerTable" process="@all"/>
-				</h:inputText>
-			</div>
+		<div align="center" class= "row">
+			<p>Você realmente deseja desativar esta conta?</p>
 		</div>
 		<br/>
+		<div align="center" class="row">
+			<h:commandLink styleClass="btn btn-primary" action="#{empregadoMB.desativarConta}"> Sim</h:commandLink>
+			<h:commandLink styleClass="btn btn-default" action="#{empregadoMB.voltarPainelAction}">Não</h:commandLink>
+		</div>
 	</h:form>
-	<p:panel id="customerTable">
-		<h:form>
-			<h:dataTable styleClass="table table-striped" var="e" value="#{empregadoMB.listaEmpregados}">
-				<h:column>
-					<f:facet name="header">
-						<h:outputLabel value="Nome"/>
-					</f:facet>
-				    <h:outputText value="#{e.nomeCompleto}"/>
-				</h:column> 
-				<h:column>
-					<f:facet name="header">
-						<h:outputLabel value="Cidade"/>
-					</f:facet>
-		 			<h:outputText value="#{e.cidade} - #{e.uf}"/>
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputLabel value="Bairro"/>
-					</f:facet>
-				   	<h:outputText value="#{e.bairro}"/>
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputLabel value="Rua"/>
-					</f:facet>
-				   	<h:outputText value="#{e.enderecoRua}"/>
-				</h:column>
-				<h:column>
-					<h:commandLink styleClass="btn btn-default" value="Ver" action="verInfoEmpregado?faces-redirect=true">
-						<f:setPropertyActionListener target="#{empregadoMB.empregado}" value="#{e}" />
-					</h:commandLink>    	
-				</h:column>
-			</h:dataTable>
-		</h:form>
-	</p:panel>
+	
 	
 									<!-- INSIRA SEU </form> -->
 								</div>
@@ -110,14 +74,9 @@
 					</div>
 
 				</div>
-			</div>
-			
-			<!-- / PAGINA PRINCIPAL -->
-			
+			</div>	
+			<!-- / PAGINA PRINCIPAL -->	
 		</div>
-
-		
-
 		<!-- FOOTER PRINCIPAL -->
 		<ui:include src="incPainel/painelFooter.xhtml" />
 		<!-- /FOOTER PRINCIPAL -->

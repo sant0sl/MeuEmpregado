@@ -70,13 +70,17 @@ public class EmpregadoService extends GenericDao<Empregado> implements Interface
 		if(ws.isCepNotFound()==true) {
 			throw new Exception("Não foi encontrado nenhuma informação através deste CEP.");
 		}else {
-			e.setCep(ws.getCep());
 			e.setEnderecoRua(ws.getLogradouroFull());
 			e.setBairro(ws.getBairro());
 			e.setCidade(ws.getCidade());
 			e.setUf(ws.getUf());			
 		}
 		return e;
+	}
+
+	public void desativarConta(Empregado e) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

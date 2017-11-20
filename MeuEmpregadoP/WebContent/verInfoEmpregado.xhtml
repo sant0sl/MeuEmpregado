@@ -79,7 +79,8 @@
 				</div>
 				<div  class="form-group col-md-3">
 					<h:outputLabel value="Sexo:"/>
-					<p id="sexo">XXXXX</p>
+					<p/>
+					<b><p  id="sexoView">XXX</p></b>
 				</div>
 				<div class="form-group col-md-3">
 					<h:outputLabel value="Telefone Fixo:"/>
@@ -125,7 +126,7 @@
 			</div>
 			<br/>
 			<div align="center" class="row">
-				<h:commandLink styleClass="btn btn-default" value="Voltar" action="#{empregadoMB.voltarBuscarEmpregado}"/>			</div>
+				<h:commandLink styleClass="btn btn-default" value="Voltar" action="#{empregadoMB.voltarBuscarEmpregadoAction}"/>			</div>
 			</div>
 		</h:form>
 									<!-- INSIRA SEU </form> -->
@@ -133,16 +134,17 @@
 							</div>
 						</div>
 					</div>
-
 				</div>
 			</div>
-			
 			<!-- / PAGINA PRINCIPAL -->
-			
+			<script>
+				if(#{empregadoMB.empregado.sexo}==true){
+					document.getElementById("sexoView").innerHTML = "Masculino" ;
+				}else{
+					document.getElementById("sexoView").innerHTML = "Feminino";
+				}
+			</script>
 		</div>
-
-		
-
 		<!-- FOOTER PRINCIPAL -->
 		<ui:include src="incPainel/painelFooter.xhtml" />
 		<!-- /FOOTER PRINCIPAL -->

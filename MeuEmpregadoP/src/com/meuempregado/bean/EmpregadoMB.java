@@ -1,6 +1,7 @@
 package com.meuempregado.bean;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -25,10 +26,12 @@ public class EmpregadoMB implements Serializable{
 	private Empregado empregado;
 	private List<Empregado> listaEmpregados;
 	private EmpregadoService empregadoService;
+	private Empregado empregadologado;
 	
 	//Construtor para novas instâncias das Classes
 	public EmpregadoMB() {
 		this.empregado = new Empregado();
+		this.empregadologado = new Empregado();
 		this.empregadoService = new EmpregadoService();
 		this.listaEmpregados = this.empregadoService.listar();
 	}
@@ -38,26 +41,22 @@ public class EmpregadoMB implements Serializable{
 		this.empregado.setAtivo(true);
 		this.empregadoService.inserir(this.empregado);
 		System.out.println("Empregado Inserido");
-		this.listaEmpregados = this.empregadoService.listar();
 		this.empregado = new Empregado();
-		return "pesquisarEmpregados";
+		return "login";
 	}
 	
 	//Método de alteração dos dados do Empregado atráves do ManagedBean
 	//OBS: provável que haja problema com o Hibernate nesse método, por causa da passagem do objeto completo, incluindo o id (o que pode dar conflito), ou não.
 	public String alterarEmpregadoAction() {
-		this.empregadoService.alterar(this.empregado);
+		this.empregadoService.alterar(this.empregadologado);
 		System.out.println("Empregado Alterado");
-		this.listaEmpregados = this.empregadoService.listar();
-		this.empregado = new Empregado();
-		return "pesquisarEmpregados";
+		return "painelAdministrativo";
 	}
 	
 	//Método de listagem de todos os dados dos Empregados atráves do ManagedBean
 	public void listarEmpregadoAction() {
 		this.listaEmpregados = this.empregadoService.listar();
 		System.out.println("Empregados na lista");
-		this.empregado = new Empregado();
 	}
 	
 	//Método de listagem da busca dos dados dos Empregados atráves de um filtro de pesquisa da tela
@@ -65,8 +64,12 @@ public class EmpregadoMB implements Serializable{
 	public void filtrarEmpregadoAction() {
 		this.listaEmpregados = this.empregadoService.filtrar(filtroEmpregado);
 		System.out.println("Empregados filtrados na lista");
-		this.empregado = new Empregado();
-		filtroEmpregado ="";
+	}
+	
+	/*Metodo que busca o cep e retorna dados de endereco atraves de WebService*/
+	public void buscarCepAlterarAction() throws Exception {
+		System.out.println("Buscando Cep e dados de endereço");
+		this.empregado = this.empregadoService.buscarCEP(empregadologado);
 	}
 	
 	/*Metodo que busca o cep e retorna dados de endereco atraves de WebService*/
@@ -75,23 +78,33 @@ public class EmpregadoMB implements Serializable{
 		this.empregado = this.empregadoService.buscarCEP(empregado);
 	}
 	
-	public String voltarBuscarEmpregado() {
+	public String voltarRealizarCadastroAction() {
+		this.empregado = new Empregado();
+		return "login";
+	}
+	
+	public String voltarBuscarEmpregadoAction() {
 		this.empregado = new Empregado();
 		return "pesquisarEmpregados";
 	}
 	
-	public String voltarCadastrarEmpregado() {
+	public String voltarPainelAction() {
 		this.empregado = new Empregado();
 		return "painelAdministrativo";
 	}
 	
-	public String limparCep() {
+	public void limparCep() {
 		this.empregado.setCep("");
 		this.empregado.setEnderecoRua("");
 		this.empregado.setBairro("");
 		this.empregado.setCidade("");
 		this.empregado.setUf("");
-		return "realizarCadastro";
+	}
+	
+	public String desativarConta() {
+		this.empregadoService.desativarConta(empregadologado);
+		this.empregadologado = new Empregado();
+		return "login";
 	}
 	
 	//-------------------------------------------
@@ -145,4 +158,13 @@ public class EmpregadoMB implements Serializable{
 	public void setListaEmpregados(List<Empregado> listaEmpregados) {
 		this.listaEmpregados = listaEmpregados;
 	}
+
+	public Empregado getEmpregadologado() {
+		return empregadologado;
+	}
+
+	public void setEmpregadologado(Empregado empregadologado) {
+		this.empregadologado = empregadologado;
+	}
+	
 }

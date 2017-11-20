@@ -11,6 +11,7 @@
 <h:head>
 <!--  IMPORTANDO HEAD -->
 <ui:include src="incPainel/painelHead.xhtml" />
+
 </h:head>
 <h:body class="nav-md">
 
@@ -28,14 +29,14 @@
 			<div class="right_col" role="main">
 				<div class="">
 					<!-- INSIRA SEU TITULO -->
-					Pesquisar Empregados
+					Realizar Cadastro
 					<div class="clearfix"></div>
 					<div class="row">
 						<div class="col-md-12 col-sm-12 col-xs-12">
 							<div class="x_panel">
 								<div class="x_title">
 									<h2>
-										Pesquisar Empregados
+										Realizar Cadastro
 									</h2>
 									<ul class="nav navbar-right panel_toolbox">
 										<li><a class="collapse-link"><i
@@ -55,54 +56,11 @@
 									<br />
 
 									<!-- INSIRA SEU <form> -->
-	<h:form>
-		<div class="row">	
-			<div class="form-group col-md-8">
-				<h:outputLabel value="Pesquisar por cidade, bairro, endereço ou cep: "/>
-				<h:inputText id="searchName" styleClass="form-control mb-4 mr-sm-4 mb-sm-0" value="#{empregadoMB.filtroEmpregado}">
-						<p:ajax event="keyup" listener="#{empregadoMB.filtrarEmpregadoAction}" update="customerTable" process="@all"/>
-						<p:ajax event="keydown" listener="#{empregadoMB.filtrarEmpregadoAction}" update="customerTable" process="@all"/>
-				</h:inputText>
-			</div>
-		</div>
-		<br/>
-	</h:form>
-	<p:panel id="customerTable">
-		<h:form>
-			<h:dataTable styleClass="table table-striped" var="e" value="#{empregadoMB.listaEmpregados}">
-				<h:column>
-					<f:facet name="header">
-						<h:outputLabel value="Nome"/>
-					</f:facet>
-				    <h:outputText value="#{e.nomeCompleto}"/>
-				</h:column> 
-				<h:column>
-					<f:facet name="header">
-						<h:outputLabel value="Cidade"/>
-					</f:facet>
-		 			<h:outputText value="#{e.cidade} - #{e.uf}"/>
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputLabel value="Bairro"/>
-					</f:facet>
-				   	<h:outputText value="#{e.bairro}"/>
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputLabel value="Rua"/>
-					</f:facet>
-				   	<h:outputText value="#{e.enderecoRua}"/>
-				</h:column>
-				<h:column>
-					<h:commandLink styleClass="btn btn-default" value="Ver" action="verInfoEmpregado?faces-redirect=true">
-						<f:setPropertyActionListener target="#{empregadoMB.empregado}" value="#{e}" />
-					</h:commandLink>    	
-				</h:column>
-			</h:dataTable>
-		</h:form>
-	</p:panel>
-	
+		<p>Meu Empregado</p>
+		
+		<a href="realizarCadastro.xhtml">Cadastrar</a>
+		
+		
 									<!-- INSIRA SEU </form> -->
 								</div>
 							</div>
@@ -115,7 +73,6 @@
 			<!-- / PAGINA PRINCIPAL -->
 			
 		</div>
-
 		
 
 		<!-- FOOTER PRINCIPAL -->

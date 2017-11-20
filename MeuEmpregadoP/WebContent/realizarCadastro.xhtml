@@ -7,11 +7,9 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
 	xmlns:p="http://primefaces.org/ui">
-
 <h:head>
 <!--  IMPORTANDO HEAD -->
 <ui:include src="incPainel/painelHead.xhtml" />
-<script type="text/javascript" src="resources/js/jsEmpregado.js"/>
 </h:head>
 <h:body class="nav-md">
 
@@ -56,6 +54,7 @@
 									<br />
 
 									<!-- INSIRA SEU <form> -->
+	
 	<h:form id="formCadastro" name="formCadastro" >
 		<div class="container">
 			<div class="row">
@@ -69,33 +68,32 @@
 				</div>
 				<div class="form-group col-md-3">
 					<h:outputLabel value="RG:*"/>
-					<p:inputMask mask="99.999.999-9" styleClass="form-control" value="#{empregadoMB.empregado.rg}"/>
+					<h:inputText styleClass="form-control" value="#{empregadoMB.empregado.rg}"/>
 				</div>
 				<div class="form-group col-md-3">
 					<h:outputLabel value="Telefone Celular:"/>
-					<p:inputMask styleClass="form-control" value="#{empregadoMB.empregado.telefoneCelular}" mask="(99)99999-9999"/>
+					<h:inputText styleClass="form-control" value="#{empregadoMB.empregado.telefoneCelular}"/>
 				</div>
 			</div>
 			<div class="row">
 				<div class="form-group col-md-3">
 					<h:outputLabel value="Data de Nascimento:*"/>
-					<p:inputMask styleClass="form-control" value="#{empregadoMB.empregado.dataNascimento}" mask="99/99/9999"/>
+					<h:inputText styleClass="form-control" value="#{empregadoMB.empregado.dataNascimento}"/>
 				</div>
 				<div  class="form-group col-md-3">
 					<h:outputLabel value="Sexo:*"/>
-					<p:selectOneRadio value="#{empregadoMB.empregado.sexo}">
+					<h:selectOneRadio value="#{empregadoMB.empregado.sexo}">
 						<f:selectItem itemValue="false" itemLabel="Feminino"/>
-						&nbsp;&nbsp;
 						<f:selectItem itemValue="true" itemLabel="Masculino"/>
-					</p:selectOneRadio>
+					</h:selectOneRadio>
 				</div>
 				<div class="form-group col-md-3">
 					<h:outputLabel value="CPF:*"/>
-					<p:inputMask mask="999.999.999-99" styleClass="form-control" value="#{empregadoMB.empregado.cpf}" />
+					<h:inputText name="cpf" styleClass="form-control" value="#{empregadoMB.empregado.cpf}" />
 				</div>
 				<div class="form-group col-md-3">
 					<h:outputLabel value="Telefone Fixo:"/>
-					<p:inputMask styleClass="form-control" value="#{empregadoMB.empregado.telefoneFixo}" mask="(99)9999-9999"/>
+					<h:inputText styleClass="form-control" value="#{empregadoMB.empregado.telefoneFixo}"/>
 				</div>
 			</div>
 			<br/>
@@ -106,12 +104,11 @@
 			<div class="row">
 				<div class="form-group col-md-3">
 					<h:outputLabel value="CEP:*"/>
-					<h:inputText maxlength="8" styleClass="form-control" value="#{empregadoMB.empregado.cep}">
-						<p:ajax event="change" update="@form" process="@all" listener="#{empregadoMB.buscarCepAction}"/>
+					<h:inputText maxlength="9" styleClass="form-control" value="#{empregadoMB.empregado.cep}">
+						<p:ajax event="blur" update="@form" process="@all" listener="#{empregadoMB.buscarCepAction}"/>
 					</h:inputText>
-					<h:commandLink styleClass="btn btn-primary" value="Limpar campos" action="#{empregadoMB.limparCep}"/>
 				</div>
-				<div class="form-group col-md-2">	
+				<div class="form-group col-md-7">	
 					<br/>
 					<p/>
 					<a href="http://www.buscacep.correios.com.br/sistemas/buscacep/"  target="_blank">&nbsp;&nbsp;Não sei meu CEP</a>
@@ -158,12 +155,13 @@
 			</div>
 			<div class="row" id="confirmaSenha">
 				<div class="form-group col-md-3">
-					<h:outputLabel value="Senha:*"/>
-					<h:inputText styleClass="form-control"  maxlength="20" value="#{empregadoMB.empregado.senha}"/>
+					<h:outputLabel  value="Senha:*"/>
+					<h:inputSecret id="senha" styleClass="form-control" value="#{empregadoMB.empregado.senha}"/>
 				</div>
 				<div class="form-group col-md-3">
 					<h:outputLabel value="Confirmar Senha:*"/>
-					<h:inputText styleClass="form-control" maxlength="20" value="#{empregadoMB.confirmarSenha}"/>
+					<h:inputSecret id="confirmarsenha" styleClass="form-control" onkeypress="verificarSenhas()" 
+					value="#{empregadoMB.confirmarSenha}"/>
 				</div>
 				<div class="col-md-3">
 					<br/>
@@ -185,7 +183,7 @@
 			<br/>
 			<div align="center" class="row">
 				<h:commandLink styleClass="btn btn-primary" value="Confimar Cadastro" action="#{empregadoMB.inserirEmpregadoAction}"/>
-			   	<h:commandLink styleClass="btn btn-default" value="Cancelar" action="#{empregadoMB.voltarCadastrarEmpregado}"/>
+			   	<h:commandLink styleClass="btn btn-default" value="Cancelar" action="#{empregadoMB.voltarRealizarCadastroAction}"/>
 			</div>
 		</div>
 	</h:form>
@@ -197,18 +195,13 @@
 
 				</div>
 			</div>
-			
-			<!-- / PAGINA PRINCIPAL -->
-			
-		</div>
-		
-
+			<!-- / PAGINA PRINCIPAL -->	
+		</div>	
 		<!-- FOOTER PRINCIPAL -->
 		<ui:include src="incPainel/painelFooter.xhtml" />
 		<!-- /FOOTER PRINCIPAL -->
 	</div>
 	<!-- IMPORT JS -->
-	<script src="resources/js/jsEmpregado.js" />
 	<ui:include src="incPainel/painelImportsJs.xhtml" />
 	<!-- /IMPORT JS -->
 </h:body>
