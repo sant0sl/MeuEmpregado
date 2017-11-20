@@ -64,36 +64,40 @@
 			<div class="row">
 				<div class="form-group col-md-6">
 					<h:outputLabel value="Nome Completo:*"/>
-					<h:inputText styleClass="form-control" value="#{empregadoMB.empregadologado.nomeCompleto}"/>
+					<p:inputText styleClass="form-control" value="#{empregadoMB.empregadologado.nomeCompleto}"/>
 				</div>
 				<div class="form-group col-md-3">
 					<h:outputLabel value="RG:*"/>
-					<h:inputText styleClass="form-control" value="#{empregadoMB.empregadologado.rg}"/>
+					<p:inputText styleClass="form-control" value="#{empregadoMB.empregadologado.rg}"/>
 				</div>
 				<div class="form-group col-md-3">
 					<h:outputLabel value="Telefone Celular:"/>
-					<h:inputText styleClass="form-control" value="#{empregadoMB.empregadologado.telefoneCelular}"/>
+					<p:inputMask styleClass="form-control" mask="(99) 9 9999-9999"
+					 value="#{empregadoMB.empregadologado.telefoneCelular}"/>
 				</div>
 			</div>
 			<div class="row">
 				<div class="form-group col-md-3">
 					<h:outputLabel value="Data de Nascimento:*"/>
-					<h:inputText styleClass="form-control" value="#{empregadoMB.empregadologado.dataNascimento}"/>
+					<p:inputMask mask="99/99/9999"	styleClass="form-control" 
+					 value="#{empregadoMB.empregadologado.dataNascimento}"/>
 				</div>
 				<div  class="form-group col-md-3">
 					<h:outputLabel value="Sexo:*"/>
-					<h:selectOneRadio value="#{empregadoMB.empregadologado.sexo}">
+					<p:selectOneRadio value="#{empregadoMB.empregadologado.sexo}">
 						<f:selectItem itemValue="false" itemLabel="Feminino"/>
 						<f:selectItem itemValue="true" itemLabel="Masculino"/>
-					</h:selectOneRadio>
+					</p:selectOneRadio>
 				</div>
 				<div class="form-group col-md-3">
 					<h:outputLabel value="CPF:*"/>
-					<h:inputText id="cpf" styleClass="form-control" value="#{empregadoMB.empregadologado.cpf}"/>
+					<p:inputMask mask="999.999.999-99"	styleClass="form-control" 
+					 value="#{empregadoMB.empregadologado.cpf}"/>
 				</div>
 				<div class="form-group col-md-3">
 					<h:outputLabel value="Telefone Fixo:"/>
-					<h:inputText styleClass="form-control" value="#{empregadoMB.empregadologado.telefoneFixo}"/>
+					<p:inputMask mask="(99) 9999-9999"	styleClass="form-control" 
+					 value="#{empregadoMB.empregadologado.telefoneFixo}"/>
 				</div>
 			</div>
 			<div class="row">
@@ -109,9 +113,9 @@
 			<div class="row">
 				<div class="form-group col-md-3">
 					<h:outputLabel value="CEP:*"/>
-					<h:inputText maxlength="9" styleClass="form-control" value="#{empregadoMB.empregadologado.cep}">
+					<p:inputMask mask="99999-999" styleClass="form-control" value="#{empregadoMB.empregadologado.cep}">
 						<p:ajax event="blur" update="@form" process="@all" listener="#{empregadoMB.buscarCepAlterarAction}"/>
-					</h:inputText>
+					</p:inputMask>
 				</div>
 				<div class="form-group col-md-2">
 					<br/>
@@ -122,29 +126,29 @@
 			<div class="row">
 				<div class="form-group col-md-10">
 					<h:outputLabel value="Rua:*"/>
-					<h:inputText styleClass="form-control" value="#{empregadoMB.empregadologado.enderecoRua}"/>
+					<p:inputText styleClass="form-control" value="#{empregadoMB.empregadologado.enderecoRua}"/>
 				</div>
 				<div class="form-group col-md-2">
 					<h:outputLabel value="Numero:*"/>
-					<h:inputText styleClass="form-control" value="#{empregadoMB.empregadologado.enderecoNumero}"/>
+					<p:inputText styleClass="form-control" value="#{empregadoMB.empregadologado.enderecoNumero}"/>
 				</div>
 			</div>
 			<div class="row">
 				<div class="form-group col-md-3">
 					<h:outputLabel value="Complemento:"/>
-					<h:inputText styleClass="form-control" value="#{empregadoMB.empregadologado.complemento}"/>
+					<p:inputText styleClass="form-control" value="#{empregadoMB.empregadologado.complemento}"/>
 				</div>
 				<div class="form-group col-md-3">
 					<h:outputLabel value="Bairro:*"/>
-					<h:inputText styleClass="form-control" value="#{empregadoMB.empregadologado.bairro}"/>
+					<p:inputText styleClass="form-control" value="#{empregadoMB.empregadologado.bairro}"/>
 				</div>
 				<div class="form-group col-md-3">
 					<h:outputLabel value="Cidade:*"/>
-					<h:inputText readonly="true" styleClass="form-control" value="#{empregadoMB.empregadologado.cidade}"/>
+					<p:inputText readonly="true" styleClass="form-control" value="#{empregadoMB.empregadologado.cidade}"/>
 				</div>
 				<div class="form-group col-md-3">
 					<h:outputLabel value="UF:*"/>
-					<h:inputText readonly="true" styleClass="form-control" value="#{empregadoMB.empregadologado.uf}"/>
+					<p:inputText readonly="true" styleClass="form-control" value="#{empregadoMB.empregadologado.uf}"/>
 				</div>
 			</div>
 			<br/>
@@ -155,7 +159,7 @@
 			<div class="row">
 				<div class="form-group col-md-6">
 					<h:outputLabel value="Email:*"/>
-					<h:inputText styleClass="form-control" value="#{empregadoMB.empregadologado.email}"/>
+					<p:inputText styleClass="form-control" value="#{empregadoMB.empregadologado.email}"/>
 				</div>
 			</div>
 			<p/>
@@ -168,17 +172,17 @@
 			<div class="row">
 				<div class="form-group col-md-3">
 					<h:outputLabel value="Senha Atual:"/>
-					<h:inputSecret styleClass="form-control" value="#{empregadoMB.senhaAtual}"/>
+					<p:password styleClass="form-control" value="#{empregadoMB.senhaAtual}"/>
 				</div>
 			</div>
 			<div class="row">
 				<div class="form-group col-md-3">
 					<h:outputLabel value="Nova Senha:"/>
-					<h:inputSecret styleClass="form-control" value="#{empregadoMB.novaSenha}"/>
+					<p:password styleClass="form-control" value="#{empregadoMB.novaSenha}"/>
 				</div>
 				<div class="form-group col-md-3">
 					<h:outputLabel value="Confirmar Senha:"/>
-					<h:inputSecret styleClass="form-control" value="#{empregadoMB.confirmarSenha}"/>
+					<p:password styleClass="form-control" value="#{empregadoMB.confirmarSenha}"/>
 				</div>
 				<div class="col-md-3">
 					<br/>
@@ -194,7 +198,7 @@
 			<div class="row">
 				<div class="form-group col-md-12">
 					<p> Escreva abaixo informações que você gostaria que o Empregador soubesse.</p>
-					<h:inputTextarea styleClass="form-control" value="#{empregadoMB.empregadologado.descricao}"/>
+					<p:inputTextarea styleClass="form-control" value="#{empregadoMB.empregadologado.descricao}"/>
 				</div>
 			</div>
 			<br/>

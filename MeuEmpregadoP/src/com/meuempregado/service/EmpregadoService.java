@@ -77,10 +77,5 @@ public class EmpregadoService extends GenericDao<Empregado> implements Interface
 		}
 		return e;
 	}
-
-	public void desativarConta(Empregado e) {
-		// TODO Auto-generated method stub
-		
-	}
 	
 }

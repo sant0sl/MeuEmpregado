@@ -10,7 +10,6 @@ import javax.faces.bean.SessionScoped;
 import com.meuempregado.model.Empregado;
 import com.meuempregado.service.EmpregadoService;
 
-
 @ManagedBean(name = "empregadoMB")
 @SessionScoped
 public class EmpregadoMB implements Serializable{
@@ -102,11 +101,12 @@ public class EmpregadoMB implements Serializable{
 	}
 	
 	public String desativarConta() {
-		this.empregadoService.desativarConta(empregadologado);
+		this.empregadologado.setAtivo(false);
+		this.empregadoService.alterar(empregadologado);
 		this.empregadologado = new Empregado();
 		return "login";
 	}
-	
+		
 	//-------------------------------------------
 	
 	//Getters and Setters
